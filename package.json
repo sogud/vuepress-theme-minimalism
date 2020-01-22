@@ -1,0 +1,10 @@
+{
+  "main": "index.js",
+  "dependencies": {
+    "element-ui": "^2.13.0",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-pwa": "^1.2.0"
+  }
+}
