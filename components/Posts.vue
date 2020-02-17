@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div :key="$page.title">
 		<el-row type="flex"
 						justify="center"
 						align="middle">
@@ -7,8 +7,9 @@
 							:xs="{span: 24}"
 							:sm="{span: 24}"
 							:md="{span: 20}"
-							:lg="{span: 12}">
-				<Content />
+							:lg="{span: 10}">
+				<Content></Content>
+				<my-comment />
 			</el-col>
 		</el-row>
 	</div>
@@ -17,6 +18,9 @@
 <script>
 export default {
 	name: 'Posts',
+	components: {
+		MyComment: () => import('./MyComment')
+	},
 	mounted() {
 		console.log('TCL: mounted -> this.$site', this.$site)
 		console.log('TCL: mounted -> this.$page', this.$page)

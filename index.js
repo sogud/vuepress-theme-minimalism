@@ -11,6 +11,7 @@ module.exports = (options, ctx) => ({
       }
     ],
     ['@vuepress/nprogress'],
+    ['@vuepress/back-to-top'],
     [
       '@vuepress/last-updated',
       {
@@ -31,7 +32,7 @@ module.exports = (options, ctx) => ({
     const postsFilter = val => val.path.slice(1, 6) === 'Posts'
     // const postsFilter = val => console.log(val.path.slice(1, 6))
     // console.log("TCL: ready -> postsFilter", postsFilter)
-   
+
     const postsSorter = (prev, next) => {
       const prevTime =
         new Date(prev.frontmatter.date).getTime() ||
@@ -45,7 +46,7 @@ module.exports = (options, ctx) => ({
     }
     const { pages } = ctx
     // console.log("TCL: ready -> pages", pages)
-  
+
     function changeDate(dateStr) {
       if (dateStr.length === undefined) {
         let str = JSON.stringify(dateStr, null, 2)
@@ -54,7 +55,7 @@ module.exports = (options, ctx) => ({
         return dateStr
       }
     }
-   
+
     function changeTime(dateStr) {
       let str = ''
       str = dateStr.slice(0, 7)
@@ -73,7 +74,6 @@ module.exports = (options, ctx) => ({
     let search = [] //搜索列表
 
     posts.forEach((val, index) => {
-  
       let page = {}
       let sear = {}
       let { excerpt, lastUpdated, path, _strippedContent } = val
@@ -116,7 +116,6 @@ module.exports = (options, ctx) => ({
 
       archived.push(page)
       search.push(sear)
-
 
       const t = {}
       t.lastUpdated = lastUpdated

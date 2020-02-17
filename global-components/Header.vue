@@ -1,5 +1,4 @@
 <template>
-
 	<el-row type="flex"
 					justify="center"
 					align="middle">
@@ -7,8 +6,13 @@
 						:xs="{span: 24}"
 						:sm="{span: 24}"
 						:md="{span: 20}"
-						:lg="{span: 14}">
-			<div class="header"></div>
+						:lg="{span: 11}">
+			<div class="header">
+				<div class="container">
+					<router-link to="/">主页</router-link>
+					<router-link to="/list">目录</router-link>
+				</div>
+			</div>
 		</el-col>
 	</el-row>
 </template>
@@ -25,11 +29,22 @@ export default {
 	background: #399c9c
 	position: relative
 	flex-shrink: 0
-	height: 6rem
+	height: 7rem
 	display: block
 	// width: 100%
 	color: #333
-	text-align: center
-	// line-height: 60px
+
+	// 
+	.container {
+		text-align: right
+		padding: 0 100px 0 0
+		line-height: 7rem
+		color: #fff
+
+		a {
+			font-size: 1rem
+			color: #fff
+		}
+	}
 }
 </style>

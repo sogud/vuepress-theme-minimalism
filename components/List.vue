@@ -9,7 +9,7 @@
 							:xs="{span: 24}"
 							:sm="{span: 24}"
 							:md="{span: 20}"
-							:lg="{span: 14}"
+							:lg="{span: 11}"
 							class="post-card">
 				<el-card class="box-card"
 								 shadow="hover">

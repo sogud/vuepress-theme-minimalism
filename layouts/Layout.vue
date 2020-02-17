@@ -1,5 +1,6 @@
 <template>
 	<div class="theme-container">
+		<!-- <canvas id="evanyou"></canvas> -->
 		<Home v-if="$page.frontmatter.home" />
 		<div v-else>
 			<Header />
@@ -11,16 +12,21 @@
 					</keep-alive>
 				</el-main>
 			</el-container>
+			<BackTop />
 			<Footer />
 		</div>
+
 	</div>
 </template>
 <script>
+import '@/util/fireworks'
+// import evanyou from '@/util/evan-you'
 import Home from '@/components/Home.vue'
 import List from '@/components/List.vue'
 import Posts from '@/components/Posts.vue'
+import BackTop from '@/components/BackTop.vue'
 export default {
-	components: { Home, List, Posts },
+	components: { Home, List, Posts, BackTop },
 	computed: {
 		pages() {
 			return this.$site.pages
@@ -60,10 +66,10 @@ export default {
 			"                    ':::::'                    ':'````..",
 			''
 		]
-
 		comments.forEach(item => {
 			console.log('%c' + item, 'color: #399c9c')
 		})
+		// evanyou()
 		console.log('TCL: whichComponent -> whichComponent', this.whichComponent)
 	}
 }
@@ -75,5 +81,14 @@ export default {
 	color: #333
 	text-align: center
 	line-height: 60px
+}
+
+#evanyou {
+	position: fixed
+	width: 100%
+	height: 100%
+	top: 0
+	left: 0
+	z-index: -1
 }
 </style>
