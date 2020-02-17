@@ -265,6 +265,13 @@ call-me-maybe@^1.0.1:
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
   integrity sha1-JtII6onje1y95gJQoV8DHBak1ms=
 
+canvas-nest.js@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/canvas-nest.js/-/canvas-nest.js-2.0.4.tgz#e010075d5dbbf3cbfc1ef18942c266b1af873469"
+  integrity sha512-Wgc+39fQBIP8fm9+Rq+Zt6+QLHZRsIKpaOQPL5KcWPlXTAalCKY4KCuklY7qzzZqBRF/t2APIrk+PuRw6ZlOog==
+  dependencies:
+    size-sensor "^0.2.0"
+
 chalk@^2.3.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -1048,6 +1055,11 @@ set-value@^2.0.0, set-value@^2.0.1:
     is-extendable "^0.1.1"
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
+
+size-sensor@^0.2.0:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/size-sensor/-/size-sensor-0.2.6.tgz#6fe43afd570786f097171834002a97fe0b19a3da"
+  integrity sha512-0EZ0tXXjyRl9R9+JpoBdH57Xpnbf5NTyDdj7fnFL6KqCsdKyah286ShMflnV2SonnrSFH4OAT/52Jy8qqnoerg==
 
 slash@^2.0.0:
   version "2.0.0"

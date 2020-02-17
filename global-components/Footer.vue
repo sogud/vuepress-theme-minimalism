@@ -7,7 +7,7 @@
 						:xs="{span: 24}"
 						:sm="{span: 24}"
 						:md="{span: 20}"
-						:lg="{span: 14}">
+						:lg="{span: 11}">
 			<div class="footer"></div>
 		</el-col>
 	</el-row>
@@ -25,7 +25,7 @@ export default {
 	background: #399c9c
 	position: relative
 	flex-shrink: 0
-	height: 6rem
+	height: 7rem
 	display: block
 	// width: 100%
 	color: #333

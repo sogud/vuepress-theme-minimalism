@@ -50,3 +50,8 @@ export default {
 	}
 }
 </script>
+<style lang="stylus" scoped>
+.nav-link {
+	color: #fff
+}
+</style>

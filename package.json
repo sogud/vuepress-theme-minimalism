@@ -1,6 +1,7 @@
 {
   "main": "index.js",
   "dependencies": {
+    "canvas-nest.js": "^2.0.4",
     "element-ui": "^2.13.0",
     "moment": "^2.24.0"
   },
