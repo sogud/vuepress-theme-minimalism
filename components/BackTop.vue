@@ -70,4 +70,12 @@ export default {
 	transition: all 0.5s ease-in-out
 	opacity: 1
 }
+
+@media (max-height: 850px) {
+	/* code */
+	.back-to-top {
+		top: -300px
+		right: 0px
+	}
+}
 </style>

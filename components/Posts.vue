@@ -1,14 +1,36 @@
 <template>
 	<div :key="$page.title">
 		<el-row type="flex"
-						justify="center"
-						align="middle">
-			<el-col :span="24"
+						align="top">
+			<el-col :span="5"
+							class="hidden-xs-only"
+							:xs="{span: 5}"
+							:sm="{span: 5}"
+							:md="{span: 5}"
+							:lg="{span: 5}">
+				<div class="toc"
+						 ref="toc">
+					<TOC :class="titleFixed == true ? 'isFixed' :''"></TOC>
+				</div>
+			</el-col>
+			<el-col :span="18"
+							:offset="1"
 							:xs="{span: 24}"
 							:sm="{span: 24}"
-							:md="{span: 20}"
-							:lg="{span: 10}">
+							:md="{span: 18}"
+							:lg="{span: 12}">
 				<Content></Content>
+			</el-col>
+
+		</el-row>
+		<el-row type="flex"
+						justify="center"
+						align="middle">
+			<el-col :span="18"
+							:xs="{span: 18}"
+							:sm="{span: 23,offset: 6}"
+							:md="{span: 18,offset:0}"
+							:lg="{span: 12}">
 				<my-comment />
 			</el-col>
 		</el-row>
@@ -16,17 +38,48 @@
 </template>
 
 <script>
+import './../node_modules/element-ui/lib/theme-chalk/display.css'
 export default {
 	name: 'Posts',
 	components: {
-		MyComment: () => import('./MyComment')
+		MyComment: () => import('./MyComment'),
+		TOC: () => import('./TOC')
+	},
+	data() {
+		return {
+			titleFixed: false
+		}
+	},
+	activated() {
+		this.titleFixed = false
+		window.addEventListener('scroll', this.handleScroll)
 	},
 	mounted() {
 		console.log('TCL: mounted -> this.$site', this.$site)
 		console.log('TCL: mounted -> this.$page', this.$page)
+	},
+	methods: {
+		//滚动监听，头部固定
+		handleScroll() {
+			let offsetTop = this.$refs.toc.getBoundingClientRect().top
+			this.titleFixed = offsetTop < 0
+			// some code
+		}
 	}
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
+.toc {
+	margin-left: 45px
+}
+
+.isFixed {
+	position: fixed
+	top: 0
+	// padding 20px
+	width: 20.83333%
+	height: 100vh
+	overflow: auto
+}
 </style>

@@ -5,9 +5,9 @@
 					align="middle">
 		<el-col :span="24"
 						:xs="{span: 24}"
-						:sm="{span: 24}"
-						:md="{span: 20}"
-						:lg="{span: 11}">
+						:sm="{span: 23,offset: 6}"
+						:md="{span: 20,offset:0}"
+						:lg="{span: 12}">
 			<div class="footer"></div>
 		</el-col>
 	</el-row>

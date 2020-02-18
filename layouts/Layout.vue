@@ -1,21 +1,23 @@
 <template>
 	<div class="theme-container">
 		<!-- <canvas id="evanyou"></canvas> -->
-		<Home v-if="$page.frontmatter.home" />
-		<div v-else>
-			<Header />
-			<el-container>
-				<!-- <el-header>Header</el-header> -->
-				<el-main>
-					<keep-alive>
-						<component :is="whichComponent"></component>
-					</keep-alive>
-				</el-main>
-			</el-container>
-			<BackTop />
-			<Footer />
-		</div>
-
+		<transition name="custom-classes-transition"
+								enter-active-class="animated fadeIn">
+			<Home v-if="$page.frontmatter.home" />
+			<div v-else>
+				<Header />
+				<el-container>
+					<!-- <el-header>Header</el-header> -->
+					<el-main>
+						<keep-alive>
+							<component :is="whichComponent"></component>
+						</keep-alive>
+					</el-main>
+				</el-container>
+				<BackTop />
+				<Footer />
+			</div>
+		</transition>
 	</div>
 </template>
 <script>
@@ -76,6 +78,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import './../styles/animeition'
+
 .el-header, .el-footer {
 	background-color: #B3C0D1
 	color: #333

@@ -2,11 +2,11 @@
 	<el-row type="flex"
 					justify="center"
 					align="middle">
-		<el-col :span="24"
+		<el-col :span="18"
 						:xs="{span: 24}"
-						:sm="{span: 24}"
-						:md="{span: 20}"
-						:lg="{span: 11}">
+						:sm="{span: 24,offset: 6}"
+						:md="{span: 18,offset:0}"
+						:lg="{span: 12}">
 			<div class="header">
 				<div class="container">
 					<router-link to="/">主页</router-link>
