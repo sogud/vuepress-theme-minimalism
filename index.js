@@ -21,7 +21,15 @@ module.exports = (options, ctx) => ({
           return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
         }
       }
-    ]
+    ],
+    [
+      'vuepress-plugin-live2d',
+      {
+        modelName: 'izumi',
+        mobileShow: false
+      }
+    ],
+    ['vuepress-plugin-table-of-contents']
   ],
   alias: {
     '@': path.resolve(__dirname)
