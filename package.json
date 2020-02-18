@@ -1,4 +1,6 @@
 {
+  "name": "vuepress-theme-minimalism",
+  "version": "1.0.0-beta",
   "main": "index.js",
   "dependencies": {
     "canvas-nest.js": "^2.0.4",
