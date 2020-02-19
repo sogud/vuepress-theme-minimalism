@@ -9,8 +9,10 @@
 						:lg="{span: 12}">
 			<div class="header">
 				<div class="container">
-					<router-link to="/">主页</router-link>
-					<router-link to="/list">目录</router-link>
+					<!-- <router-link to="/">首页</router-link> -->
+					<router-link to="/list">全部</router-link>
+					<router-link to="/tags">分类</router-link>
+					<router-link to="/timeline">时间线</router-link>
 				</div>
 			</div>
 		</el-col>

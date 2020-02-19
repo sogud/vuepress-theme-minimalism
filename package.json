@@ -1,15 +1,17 @@
 {
   "name": "vuepress-theme-minimalism",
+  "description": "theme for vuepress",
   "version": "1.0.0",
   "main": "index.js",
-  "dependencies": {
-    "canvas-nest.js": "^2.0.4",
-    "element-ui": "^2.13.0",
-    "moment": "^2.24.0",
-    "vuepress-plugin-live2d": "^0.0.7",
-    "vuepress-plugin-table-of-contents": "^1.1.5"
+  "private": false,
+  "keywords": [
+    "vue",
+    "vuepress",
+    "theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onnezezt/vuepress-theme-minimalism"
   },
-  "devDependencies": {
-    "@vuepress/plugin-pwa": "^1.2.0"
-  }
+  "license": "MIT"
 }
