@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import './../node_modules/element-ui/lib/theme-chalk/display.css'
+import 'element-ui/lib/theme-chalk/display.css'
 export default {
 	name: 'Posts',
 	components: {
@@ -72,13 +72,15 @@ export default {
 <style lang="stylus" scoped>
 .toc {
 	margin-left: 45px
+	width: 380px
 }
 
 .isFixed {
 	position: fixed
 	top: 0
 	// padding 20px
-	width: 20.83333%
+	// width: 20.83333%
+	width: 380px
 	height: 100vh
 	overflow: auto
 }

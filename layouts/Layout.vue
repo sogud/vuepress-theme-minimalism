@@ -1,6 +1,10 @@
 <template>
-	<div class="theme-container">
+	<div class="theme-container"
+			 :class="isDark?'dark':''">
 		<!-- <canvas id="evanyou"></canvas> -->
+		<div class="dark-icon"
+				 v-if="themeConfig.darkMode.switch"
+				 @click="isDark=!isDark"></div>
 		<transition name="custom-classes-transition"
 								enter-active-class="animated fadeIn">
 			<Home v-if="$page.frontmatter.home" />
@@ -22,20 +26,30 @@
 </template>
 <script>
 import '@/util/fireworks'
-// import evanyou from '@/util/evan-you'
-import Home from '@/components/Home.vue'
-import List from '@/components/List.vue'
-import Posts from '@/components/Posts.vue'
-import BackTop from '@/components/BackTop.vue'
+import Home from '@/components/Home'
+import List from '@/components/List'
+import Tags from '@/components/Tags'
+import TimeLine from '@/components/TimeLine'
+import Posts from '@/components/Posts'
+import BackTop from '@/components/BackTop'
 export default {
-	components: { Home, List, Posts, BackTop },
+	components: { Home, List, Posts, BackTop, Tags, TimeLine },
+	data() {
+		return {
+			isDark: false
+		}
+	},
 	computed: {
 		pages() {
 			return this.$site.pages
 		},
+		themeConfig() {
+			return this.$site.themeConfig
+		},
 		whichComponent() {
-			const compArr = ['List', 'All', 'Posts']
+			const compArr = ['List', 'All', 'Posts', 'TimeLine', 'Tags']
 			const Path = this.$page.relativePath
+
 			let comp = ''
 			compArr.forEach(item => {
 				if (Path.includes(item)) {
@@ -72,6 +86,7 @@ export default {
 			console.log('%c' + item, 'color: #399c9c')
 		})
 		// evanyou()
+		console.log('TCL: whichComponent -> this.$page.', this.$page, this.$site)
 		console.log('TCL: whichComponent -> whichComponent', this.whichComponent)
 	}
 }
@@ -79,6 +94,18 @@ export default {
 
 <style lang="stylus" scoped>
 @import './../styles/animeition'
+@import './../styles/dark'
+
+.dark-icon {
+	position: fixed
+	top: 0
+	right: 0
+	width: 100px
+	height: 100px
+	background: #ccc
+	cursor: pointer
+	z-index: 100
+}
 
 .el-header, .el-footer {
 	background-color: #B3C0D1

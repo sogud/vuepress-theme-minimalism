@@ -11,25 +11,23 @@ module.exports = (options, ctx) => ({
       }
     ],
     ['@vuepress/nprogress'],
-    ['@vuepress/back-to-top'],
-    [
-      '@vuepress/last-updated',
-      {
-        transformer: timestamp => {
-          const moment = require('moment')
-          moment.locale('zh-CN')
-          return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
-        }
-      }
-    ],
+    // [
+    //   '@vuepress/last-updated',
+    //   {
+    //     transformer: timestamp => {
+    //       const moment = require('moment')
+    //       moment.locale('zh-CN')
+    //       return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
+    //     }
+    //   }
+    // ],
     [
       'vuepress-plugin-live2d',
       {
         modelName: 'izumi',
         mobileShow: false
       }
-    ],
-    ['vuepress-plugin-table-of-contents']
+    ]
   ],
   alias: {
     '@': path.resolve(__dirname)

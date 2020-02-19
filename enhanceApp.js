@@ -3,8 +3,8 @@
 // const Vuetify = require('./node_modules/vuetify/lib')
 // import Vuetify from './node_modules/vuetify/dist/vuetify.min.js'
 // import Vuetify, { VLayout } from './node_modules/vuetify/lib'
-import ElementUI from './node_modules/element-ui/lib'
-import './node_modules/element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui/lib'
+import 'element-ui/lib/theme-chalk/index.css';
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
