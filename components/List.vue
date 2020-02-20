@@ -3,7 +3,7 @@
 		<el-row type="flex"
 						justify="center"
 						align="middle"
-						v-for="(item,index) in data"
+						v-for="(item,index) in content"
 						:key="index">
 			<el-col :span="24"
 							:xs="{span: 24}"
@@ -32,6 +32,7 @@
 					</div>
 					<div class="bottom clearfix">
 						<a class="tag"
+							 @click="toTag(item)"
 							 v-for="(item,index) in item.tags"
 							 :key="index">
 							#{{ item }}
@@ -45,13 +46,13 @@
 </template>
 
 <script>
-import data from '@/data/content'
+import content from '@/data/content'
 
 export default {
 	name: 'List',
 	data() {
 		return {
-			data: data
+			content: content
 		}
 	},
 	computed: {
@@ -61,7 +62,7 @@ export default {
 	},
 	filters: {},
 	created() {
-		this.data.forEach(item => {
+		this.content.forEach(item => {
 			if (!item.tags) {
 				item.tags = ['未分类']
 			}
@@ -71,59 +72,21 @@ export default {
 		})
 	},
 	mounted() {
-		console.log('TCL: data', this.data)
 		console.log('TCL: mounted -> this.$site', this.$site)
 		console.log('TCL: mounted -> this.$page', this.$page)
-		console.log('TCL: pages', this.pages)
 	},
 	methods: {
 		toContent(item) {
-			console.log('TCL: toDetail -> item', item)
+			console.log('TCL: toContent -> item', item)
 			this.$router.push(item.path)
+		},
+		toTag(tag) {
+			this.$router.push({ path: `tags.html?tag=${tag}` })
 		}
 	}
 }
 </script>
 
 <style lang="stylus" scoped>
-.box-card {
-	margin: 10px
-
-	&:first-child {
-		margin-top: 20px
-	}
-
-	&:last-child {
-		margin-bottom: 10px
-	}
-
-	.date-time {
-		color: #ccc
-		margin: 10px 0 20px 30px
-		font-size: 0.75rem
-	}
-
-	.title {
-		font-size: 1.4rem
-		margin-left: 30px
-		color: #666
-		cursor: pointer
-
-		&:hover {
-			color: #9c396b
-			text-shadow: 1px 1px 1px #ddd
-		}
-	}
-
-	.tag {
-		color: #399c9c
-		margin-left: 30px
-		cursor: pointer
-
-		&:hover {
-			color: #9c396b
-			text-shadow: 1px 1px 1px #ddd
-		}
-	}
-}
+@import './../styles/list'
 </style>

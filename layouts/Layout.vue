@@ -4,7 +4,18 @@
 		<!-- <canvas id="evanyou"></canvas> -->
 		<div class="dark-icon"
 				 v-if="themeConfig.darkMode.switch"
-				 @click="isDark=!isDark"></div>
+				 @click="isDark=!isDark">
+			<svg v-if="isDark"
+					 class="icon icon-dark"
+					 aria-hidden="true">
+				<use xlink:href="#icon-yueliang"></use>
+			</svg>
+			<svg v-else
+					 class="icon icon-dark"
+					 aria-hidden="true">
+				<use xlink:href="#icon-taiyang"></use>
+			</svg>
+		</div>
 		<transition name="custom-classes-transition"
 								enter-active-class="animated fadeIn">
 			<Home v-if="$page.frontmatter.home" />
@@ -13,9 +24,9 @@
 				<el-container>
 					<!-- <el-header>Header</el-header> -->
 					<el-main>
-						<keep-alive>
+						<!-- <keep-alive> -->
 							<component :is="whichComponent"></component>
-						</keep-alive>
+						<!-- </keep-alive> -->
 					</el-main>
 				</el-container>
 				<BackTop />
@@ -25,6 +36,7 @@
 	</div>
 </template>
 <script>
+import '@/styles/icon/iconfont.js'
 import '@/util/fireworks'
 import Home from '@/components/Home'
 import List from '@/components/List'
@@ -91,7 +103,6 @@ export default {
 	}
 }
 </script>
-
 <style lang="stylus" scoped>
 @import './../styles/animeition'
 @import './../styles/dark'
@@ -100,11 +111,13 @@ export default {
 	position: fixed
 	top: 0
 	right: 0
-	width: 100px
-	height: 100px
-	background: #ccc
-	cursor: pointer
 	z-index: 100
+
+	.icon-dark {
+		cursor: pointer
+		width: 3rem
+		height: 3rem
+	}
 }
 
 .el-header, .el-footer {

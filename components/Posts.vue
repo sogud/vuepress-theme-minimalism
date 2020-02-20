@@ -19,7 +19,9 @@
 							:sm="{span: 24}"
 							:md="{span: 18}"
 							:lg="{span: 12}">
-				<Content></Content>
+				<div class="content-container">
+					<Content></Content>
+				</div>
 			</el-col>
 
 		</el-row>
@@ -54,10 +56,7 @@ export default {
 		this.titleFixed = false
 		window.addEventListener('scroll', this.handleScroll)
 	},
-	mounted() {
-		console.log('TCL: mounted -> this.$site', this.$site)
-		console.log('TCL: mounted -> this.$page', this.$page)
-	},
+	mounted() {},
 	methods: {
 		//滚动监听，头部固定
 		handleScroll() {
@@ -73,6 +72,10 @@ export default {
 .toc {
 	margin-left: 45px
 	width: 380px
+}
+
+.content-container {
+	padding: 0 10px
 }
 
 .isFixed {

@@ -1,0 +1,23 @@
+{
+  "id": "1648360",
+  "name": "vuepress",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3553996",
+      "name": "月亮",
+      "font_class": "yueliang",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "3553997",
+      "name": "太阳",
+      "font_class": "taiyang",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    }
+  ]
+}

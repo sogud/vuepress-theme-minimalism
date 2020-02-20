@@ -22,7 +22,7 @@ export default {
 <style lang="stylus" scoped>
 .footer {
 	margin: 20px
-	background: #399c9c
+	background: $accentColor
 	position: relative
 	flex-shrink: 0
 	height: 7rem

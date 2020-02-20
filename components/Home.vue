@@ -1,12 +1,14 @@
 <template>
 	<main class="home"
+				:style="homeBackground"
 				aria-labelledby="main-title">
 		<transition name="custom-classes-transition"
 								enter-active-class="animated bounceIn"
 								leave-active-class="animated fadeOutUpBig">
 			<div class="hero"
+					 :style="heroBackground"
 					 v-if="isVisible">
-				<NavLink class="action-button"
+				<NavLink class="action-button title"
 								 :item="actionLink" />
 				<!-- <img v-if="data.heroImage"
 					 :src="$withBase(data.heroImage)"
@@ -36,7 +38,22 @@ export default {
 		data() {
 			return this.$page.frontmatter
 		},
-
+		homeBackground() {
+			if (this.$site.themeConfig.homeBackground.show) {
+				return {
+					background: `url(${this.$site.themeConfig.homeBackground.fileName})`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center'
+				}
+			}
+		},
+		heroBackground() {
+			if (!this.$site.themeConfig.homeBackground.show) {
+				return {
+					background: `#399c9c`
+				}
+			}
+		},
 		actionLink() {
 			return {
 				link: this.data.actionLink,
@@ -45,6 +62,7 @@ export default {
 		}
 	},
 	mounted() {
+		console.log(this.$site)
 		this.isVisible = true
 	},
 	beforeDestroy() {
@@ -62,6 +80,9 @@ export default {
 	justify-content: center
 	align-items: center
 	height: 100vh
+	// background: url('https://i.loli.net/2019/11/17/GAYyzeKsiWjP5qO.jpg')
+	background-size: cover
+	background-position: center
 
 	.hero {
 		display: flex
@@ -69,7 +90,27 @@ export default {
 		justify-content: center
 		width: 30rem
 		height: 6rem
-		background: #399c9c
+		// background: $accentColor
+		box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126), 0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224), 0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4)
+		backdrop-filter: blur(20px)
+		transition: 0.5s ease
+
+		&:hover {
+			box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.157), 0 1.7px 2.6px rgba(0, 0, 0, 0.224), 0 3.5px 5.3px rgba(0, 0, 0, 0.28), 0 7.3px 11px rgba(0, 0, 0, 0.346), 0 20px 30px rgba(0, 0, 0, 0.5)
+		}
+
+		.title {
+			padding-left: 0.375em
+			font-size: 1.6em
+			font-family: Lato, sans-serif
+			font-weight: 200
+			letter-spacing: 0.65em
+			color: white
+
+			@media (max-width: 640px) {
+				font-size: 1em
+			}
+		}
 	}
 }
 
