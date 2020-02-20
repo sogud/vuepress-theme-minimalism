@@ -8,7 +8,11 @@
 						:sm="{span: 23,offset: 6}"
 						:md="{span: 20,offset:0}"
 						:lg="{span: 12}">
-			<div class="footer"></div>
+			<div class="footer">
+				<span class="text">
+					©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>
+				</span>
+			</div>
 		</el-col>
 	</el-row>
 </template>
@@ -28,8 +32,21 @@ export default {
 	height: 7rem
 	display: block
 	// width: 100%
-	color: #333
+	color: $textColor
 	text-align: center
-	// line-height: 60px
+
+	.text {
+		text-align: center
+		position: relative
+		top: 3rem
+
+		a {
+			color: $textColor
+
+			&:hover {
+				text-decoration: underline
+			}
+		}
+	}
 }
 </style>
