@@ -9,10 +9,11 @@
 						:lg="{span: 12}">
 			<div class="header">
 				<div class="container">
-					<!-- <router-link to="/">首页</router-link> -->
+					<router-link to="/"
+											 style="float: left;margin-left: 60px;">首页</router-link>
 					<router-link to="/list">全部</router-link>
 					<router-link to="/tags">分类</router-link>
-					<router-link to="/timeline">时间线</router-link>
+					<!-- <router-link to="/timeline">时间线</router-link> -->
 				</div>
 			</div>
 		</el-col>
@@ -28,7 +29,7 @@ export default {
 <style lang="stylus" scoped>
 .header {
 	margin: 20px
-	background: #399c9c
+	background: $accentColor
 	position: relative
 	flex-shrink: 0
 	height: 7rem
