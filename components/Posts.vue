@@ -52,11 +52,10 @@ export default {
 			titleFixed: false
 		}
 	},
-	activated() {
+	mounted() {
 		this.titleFixed = false
 		window.addEventListener('scroll', this.handleScroll)
 	},
-	mounted() {},
 	methods: {
 		//滚动监听，头部固定
 		handleScroll() {
