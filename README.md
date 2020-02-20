@@ -14,7 +14,7 @@ or
 yarn add vuepress-theme-minimalism
 ```
 
-- 在 config.js 使用 theme
+- 在 config.js 使用 theme。
 
 ```js
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
 }
 ```
 
-- 文章写在 Posts 目录，新建 Posts 文件夹 注：区分大小写
+- 文章写在 Posts 目录，新建 Posts 文件夹 注：区分大小写。
 
 ```
 .
@@ -36,7 +36,7 @@ module.exports = {
 └─ package.json
 ```
 
-- 新建 index.md 文件,填写以下配置
+- 新建 index.md 文件,填写以下配置：
 
 ```yml
 ---
@@ -47,7 +47,12 @@ actionLink: /list #首页跳转链接
 ---
 
 ```
-- 书写正确格式的文章
+- 新建 list.md 文件,空内容即可。
+```yml
+├── docs
+│   ├── List.md #列表页
+```
+- 开始写一篇博客吧！书写正确的格式如下：
 
 ```markdown
 ---
@@ -83,7 +88,7 @@ tags:
 
 ## 主题配置
 
-```json
+``` json
 themeConfig: {
     home: true,
     homeBackground: { //设置主页背景颜色，false title为默认颜色
