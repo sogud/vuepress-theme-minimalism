@@ -47,6 +47,23 @@ actionLink: /list #首页跳转链接
 ---
 
 ```
+- 书写正确格式的文章
+
+```markdown
+---
+title: vuepress主题配置
+tags:
+  - vuepress
+  - markdown
+---
+
+# vuepress-theme-minimalism
+
+## 介绍
+
+一款简洁的 vuepress 主题，兼容 hexo YAML front matter 语法。
+
+```
 
 ## 目录结构
 
