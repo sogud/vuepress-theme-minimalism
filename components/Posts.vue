@@ -10,7 +10,7 @@
 							:lg="{span: 5}">
 				<div class="toc"
 						 ref="toc">
-					<TOC :class="titleFixed == true ? 'isFixed' :''"></TOC>
+						<TOC :class="titleFixed == true ? 'isFixed' :''"></TOC>
 				</div>
 			</el-col>
 			<el-col :span="18"
@@ -19,8 +19,8 @@
 							:sm="{span: 24}"
 							:md="{span: 18}"
 							:lg="{span: 12}">
-				<div class="content-container">
-					<Content></Content>
+				<div class="content-container">			
+						<Content></Content>
 				</div>
 			</el-col>
 

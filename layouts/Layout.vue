@@ -1,11 +1,10 @@
 <template>
 	<div class="theme-container"
 			 :class="isDark?'dark':''">
-		<!-- <canvas id="evanyou"></canvas> -->
 		<div class="dark-icon"
 				 v-if="themeConfig.darkMode.switch"
 				 @click="isDark=!isDark">
-			<svg v-if="isDark"
+			<!-- <svg v-if="isDark"
 					 class="icon icon-dark"
 					 aria-hidden="true">
 				<use xlink:href="#icon-yueliang"></use>
@@ -14,7 +13,11 @@
 					 class="icon icon-dark"
 					 aria-hidden="true">
 				<use xlink:href="#icon-taiyang"></use>
-			</svg>
+			</svg> -->
+			<span v-if="isDark"
+						class="iconfont icon-yueliang"></span>
+			<span v-else
+						class="iconfont icon-taiyang"></span>
 		</div>
 		<transition name="custom-classes-transition"
 								enter-active-class="animated fadeIn">
@@ -22,10 +25,9 @@
 			<div v-else>
 				<Header />
 				<el-container>
-					<!-- <el-header>Header</el-header> -->
 					<el-main>
 						<!-- <keep-alive> -->
-							<component :is="whichComponent"></component>
+						<component :is="whichComponent"></component>
 						<!-- </keep-alive> -->
 					</el-main>
 				</el-container>
@@ -36,14 +38,15 @@
 	</div>
 </template>
 <script>
-import '@/styles/icon/iconfont.js'
-import '@/util/fireworks'
+import '@/styles/icon/iconfont.css'
 import Home from '@/components/Home'
 import List from '@/components/List'
 import Tags from '@/components/Tags'
 import TimeLine from '@/components/TimeLine'
 import Posts from '@/components/Posts'
 import BackTop from '@/components/BackTop'
+// import '@/styles/icon/iconfont.js'
+import { CursorSpecialEffects } from '@/util/fireworks.js'
 export default {
 	components: { Home, List, Posts, BackTop, Tags, TimeLine },
 	data() {
@@ -72,6 +75,7 @@ export default {
 		}
 	},
 	mounted() {
+		this.window = window
 		const comments = [
 			'',
 			'                    .::::.            快捷键：',
@@ -98,6 +102,8 @@ export default {
 			console.log('%c' + item, 'color: #399c9c')
 		})
 		// evanyou()
+		const cursorSpecialEffects = new CursorSpecialEffects()
+		cursorSpecialEffects.init()
 		console.log('TCL: whichComponent -> this.$page.', this.$page, this.$site)
 		console.log('TCL: whichComponent -> whichComponent', this.whichComponent)
 	}
@@ -112,6 +118,12 @@ export default {
 	top: 0
 	right: 0
 	z-index: 100
+
+	span {
+		font-size: 3rem
+		color: #e6a23c
+		cursor: pointer
+	}
 
 	.icon-dark {
 		cursor: pointer
