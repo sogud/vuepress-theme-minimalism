@@ -92,7 +92,7 @@ class Boom {
   }
 }
 
-class CursorSpecialEffects {
+export class CursorSpecialEffects {
   constructor() {
     this.computerCanvas = document.createElement('canvas')
     this.renderCanvas = document.createElement('canvas')
@@ -170,5 +170,4 @@ class CursorSpecialEffects {
   }
 }
 
-const cursorSpecialEffects = new CursorSpecialEffects()
-cursorSpecialEffects.init()
+
