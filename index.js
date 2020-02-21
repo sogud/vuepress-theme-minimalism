@@ -29,6 +29,7 @@ module.exports = (options, ctx) => ({
     //   }
     // ]
   ],
+  enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
   alias: {
     '@': path.resolve(__dirname)
   },
