@@ -9,7 +9,7 @@
 							:md="{span: 20}"
 							:lg="{span: 12}">
 				<div class="container">
-					<el-tag @click="toTag(tag)"
+					<el-tag @click="toTags(tag)"
 									class="tags"
 									v-for="(tag, index) in tagsList"
 									:style="randomRgb()"
@@ -38,6 +38,7 @@
 							</div>
 							<div class="bottom clearfix">
 								<a class="tag"
+									 @click="toTag(item)"
 									 v-for="(item,index) in item.tags"
 									 :key="index">
 									#{{ item }}
@@ -86,17 +87,20 @@ export default {
 		}
 	},
 	methods: {
-		toTag(tag) {
+		toTags(tag) {
 			this.tagName = tag[0].name
+		},
+		toTag(tag) {
+			this.tagName = tag
 		},
 		toContent(item) {
 			this.$router.push(item.path)
 		},
 		randomRgb() {
-			var R = Math.floor(Math.random() * 255)
-			var G = Math.floor(Math.random() * 255)
-			var B = Math.floor(Math.random() * 255)
-			return { background: 'rgb(' + R + ',' + G + ',' + B + ')' }
+			var R = Math.floor(Math.random() * 233)
+			var G = Math.floor(Math.random() * 233)
+			var B = Math.floor(Math.random() * 233)
+			return { background: 'rgba(' + R + ',' + G + ',' + B + 0.8 + ')' }
 		}
 	}
 }

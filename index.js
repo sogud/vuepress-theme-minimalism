@@ -20,7 +20,7 @@ module.exports = (options, ctx) => ({
           return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
         }
       }
-    ],
+    ]
     // [
     //   'vuepress-plugin-live2d',
     //   {
@@ -70,6 +70,13 @@ module.exports = (options, ctx) => ({
       let result = [arr[0] + '-' + arr[1], Number(arr[0]) + Number(arr[1])]
       return result
     }
+    // function lastDataGetMonth(dateStr) {
+    //   let str = ''
+    //   str = dateStr.slice(0, 7)
+    //   const arr = str.split('-')
+    //   let result = [arr[0] + '-' + arr[1], Number(arr[0]) + Number(arr[1])]
+    //   return str
+    // }
     const posts = pages.filter(postsFilter)
     // const posts = pages.forEach(postsFilter)
     // const posts = pages
@@ -163,8 +170,8 @@ module.exports = (options, ctx) => ({
     archived.forEach((val, i) => {
       let result1 = changeTime(val.lastUpdated)
       if (archived.length === 1) {
-        timeLine[0] = [result1[0]]
-        return timeLine[0].push(val)
+        timeLine[0] = { time: result1[0], data: [] }
+        return timeLine[0].data.push(val)
       }
       if (i + 1 !== archived.length) {
         var result2 = changeTime(archived[i + 1].lastUpdated)
@@ -172,12 +179,9 @@ module.exports = (options, ctx) => ({
         var result2 = changeTime(archived[i - 1].lastUpdated)
       }
       if (!timeLine[index]) {
-        timeLine[index] = [result1[0]]
+        timeLine[index] = { time: result1[0], data: [] }
       }
-      if (!timeLine[index]) {
-        timeLine[index] = [result2[0]]
-      }
-      timeLine[index].push(val)
+      timeLine[index].data.push(val)
       if (result1[1] !== result2[1]) {
         index++
       }
@@ -223,8 +227,8 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(timeLine, null, 2)};`,
       error => {
         if (error)
-          return console.log('写入归档页poList文件失败,原因是' + error.message)
-        console.log('写入归档页poList文件成功')
+          return console.log('写入时间线timeLinet文件失败,原因是' + error.message)
+        console.log('写入时间线timeLine文件成功')
       }
     )
   }
