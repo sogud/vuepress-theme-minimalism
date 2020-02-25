@@ -13,7 +13,7 @@
 											 style="float: left;margin-left: 60px;">首页</router-link>
 					<router-link to="/list">全部</router-link>
 					<router-link to="/tags">分类</router-link>
-					<!-- <router-link to="/timeline">时间线</router-link> -->
+					<router-link to="/timeline">时间线</router-link>
 				</div>
 			</div>
 		</el-col>

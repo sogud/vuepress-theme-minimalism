@@ -32,7 +32,7 @@
 					</div>
 					<div class="bottom clearfix">
 						<a class="tag"
-							 @click="toTag(item)"
+							 @click="toTags(item)"
 							 v-for="(item,index) in item.tags"
 							 :key="index">
 							#{{ item }}
@@ -80,7 +80,7 @@ export default {
 			console.log('TCL: toContent -> item', item)
 			this.$router.push(item.path)
 		},
-		toTag(tag) {
+		toTags(tag) {
 			this.$router.push({ path: `tags.html?tag=${tag}` })
 		}
 	}
