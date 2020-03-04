@@ -6,7 +6,7 @@
 								enter-active-class="animated bounceIn"
 								leave-active-class="animated fadeOutUpBig">
 			<div class="hero"
-					 :style="heroBackground"
+					 :class="$site.themeConfig.homeBackground.show==false?'heroBackground':''"
 					 v-if="isVisible">
 				<NavLink class="action-button title"
 								 :item="actionLink" />
@@ -47,13 +47,13 @@ export default {
 				}
 			}
 		},
-		heroBackground() {
-			if (!this.$site.themeConfig.homeBackground.show) {
-				return {
-					background: `#399c9c`
-				}
-			}
-		},
+		// heroBackground() {
+		// 	if (!this.$site.themeConfig.homeBackground.show) {
+		// 		return {
+		// 			background: `#399c9c`
+		// 		}
+		// 	}
+		// },
 		actionLink() {
 			return {
 				link: this.data.actionLink,
@@ -73,6 +73,10 @@ export default {
 
 <style lang="stylus">
 @import './../styles/animeition'
+
+.heroBackground {
+	background: $accentColor !important
+}
 
 .home {
 	// background: #fff

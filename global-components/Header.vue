@@ -32,16 +32,18 @@ export default {
 	background: $accentColor
 	position: relative
 	flex-shrink: 0
-	height: 7rem
+	height: 8rem
 	display: block
 	// width: 100%
 	color: #333
+	border-radius: 5px
+		box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3)
 
 	// 
 	.container {
 		text-align: right
 		padding: 0 100px 0 0
-		line-height: 7rem
+		line-height: 8rem
 		color: #fff
 
 		a {
