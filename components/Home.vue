@@ -8,8 +8,24 @@
 			<div class="hero"
 					 :class="$site.themeConfig.homeBackground.show==false?'heroBackground':''"
 					 v-if="isVisible">
-				<NavLink class="action-button title"
-								 :item="actionLink" />
+				<router-link to="/list">
+					<span class="iconfont icon-sort"></span>
+					{{$site.themeConfig.headerText.all}}
+				</router-link>
+				<router-link to="/tags">
+					<span class="iconfont icon-label_fill"></span>
+					{{$site.themeConfig.headerText.tags}}
+				</router-link>
+				<router-link to="/timeline">
+					<span class="iconfont icon-schedule"></span>
+					{{$site.themeConfig.headerText.timeline}}
+				</router-link>
+				<router-link to="/">
+					<span class="iconfont icon-home"></span>
+					{{$site.themeConfig.headerText.index}}
+				</router-link>
+				<!-- <NavLink class="action-button title"
+								 :item="actionLink" /> -->
 				<!-- <img v-if="data.heroImage"
 					 :src="$withBase(data.heroImage)"
 					 :alt="data.heroAlt || 'hero'"> -->
@@ -47,13 +63,6 @@ export default {
 				}
 			}
 		},
-		// heroBackground() {
-		// 	if (!this.$site.themeConfig.homeBackground.show) {
-		// 		return {
-		// 			background: `#399c9c`
-		// 		}
-		// 	}
-		// },
 		actionLink() {
 			return {
 				link: this.data.actionLink,
@@ -94,13 +103,21 @@ export default {
 		justify-content: center
 		width: 30rem
 		height: 6rem
-		// background: $accentColor
 		box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126), 0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224), 0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4)
 		backdrop-filter: blur(20px)
 		transition: 0.5s ease
 
 		&:hover {
-			box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.157), 0 1.7px 2.6px rgba(0, 0, 0, 0.224), 0 3.5px 5.3px rgba(0, 0, 0, 0.28), 0 7.3px 11px rgba(0, 0, 0, 0.346), 0 20px 30px rgba(0, 0, 0, 0.5)
+			box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.137), 0 1.7px 2.6px rgba(0, 0, 0, 0.224), 0 3.5px 5.3px rgba(0, 0, 0, 0.28), 0 7.3px 11px rgba(0, 0, 0, 0.346), 0 20px 30px rgba(0, 0, 0, 0.5)
+		}
+
+		a {
+			margin: 0 5px
+			color: #ffffffa6 !important
+
+			&:hover {
+				color: #ffffff !important
+			}
 		}
 
 		.title {

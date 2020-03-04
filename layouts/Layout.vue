@@ -4,16 +4,6 @@
 		<div class="dark-icon"
 				 v-if="themeConfig.darkMode.switch"
 				 @click="isDark=!isDark">
-			<!-- <svg v-if="isDark"
-					 class="icon icon-dark"
-					 aria-hidden="true">
-				<use xlink:href="#icon-yueliang"></use>
-			</svg>
-			<svg v-else
-					 class="icon icon-dark"
-					 aria-hidden="true">
-				<use xlink:href="#icon-taiyang"></use>
-			</svg> -->
 			<span v-if="isDark"
 						class="iconfont icon-yueliang"></span>
 			<span v-else
@@ -21,7 +11,7 @@
 		</div>
 		<transition name="custom-classes-transition"
 								enter-active-class="animated fadeIn">
-			<Home v-if="$page.frontmatter.home" />
+			<Home v-if="$page.path == '/'" />
 			<div v-else>
 				<Header />
 				<el-container>
@@ -38,6 +28,7 @@
 	</div>
 </template>
 <script>
+import moment from 'moment'
 import '@/styles/icon/iconfont.css'
 import Home from '@/components/Home'
 import List from '@/components/List'
@@ -75,6 +66,14 @@ export default {
 		}
 	},
 	mounted() {
+		this.now = new Date()
+		this.hour = this.now.getHours()
+		if (
+			this.hour > this.$site.themeConfig.darkMode.on ||
+			this.hour < this.$site.themeConfig.darkMode.off
+		) {
+			this.isDark = true
+		}
 		this.window = window
 		const comments = [
 			'',

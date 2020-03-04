@@ -53,6 +53,7 @@ export default {
 		}
 	},
 	mounted() {
+		console.log(this.$page)
 		this.titleFixed = false
 		window.addEventListener('scroll', this.handleScroll)
 	},

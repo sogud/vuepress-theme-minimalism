@@ -41,7 +41,7 @@
 									 @click="toTag(item)"
 									 v-for="(item,index) in item.tags"
 									 :key="index">
-									#{{ item }}
+									<span class="iconfont icon-label_fill"></span> {{ item }}
 								</a>
 								<!-- <time class="time">{{ item.excerpt }}</time> -->
 							</div>
@@ -97,9 +97,9 @@ export default {
 			this.$router.push(item.path)
 		},
 		randomRgb() {
-			var R = Math.floor(Math.random() * 233)
-			var G = Math.floor(Math.random() * 233)
-			var B = Math.floor(Math.random() * 233)
+			var R = Math.floor(Math.random() * 255)
+			var G = Math.floor(Math.random() * 255)
+			var B = Math.floor(Math.random() * 255)
 			return { background: 'rgba(' + R + ',' + G + ',' + B + 0.8 + ')' }
 		}
 	}

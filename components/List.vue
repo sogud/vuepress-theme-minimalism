@@ -35,7 +35,7 @@
 							 @click="toTags(item)"
 							 v-for="(item,index) in item.tags"
 							 :key="index">
-							#{{ item }}
+							<span class="iconfont icon-label_fill"></span> {{ item }}
 						</a>
 						<!-- <time class="time">{{ item.excerpt }}</time> -->
 					</div>
@@ -72,12 +72,10 @@ export default {
 		})
 	},
 	mounted() {
-		console.log('TCL: mounted -> this.$site', this.$site)
-		console.log('TCL: mounted -> this.$page', this.$page)
+    console.log("TCL: mounted -> this.$page", this.$page)
 	},
 	methods: {
 		toContent(item) {
-			console.log('TCL: toContent -> item', item)
 			this.$router.push(item.path)
 		},
 		toTags(tag) {

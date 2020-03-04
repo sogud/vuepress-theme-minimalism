@@ -16,8 +16,8 @@
 														:color="activity.color"
 														:size="activity.size"
 														:timestamp="activity.timestamp">
-
-						<span class="time">{{activity.time}}</span>
+						<span class="time iconfont icon-schedule"></span>
+						<span class="time">{{ activity.time}}</span>
 						<el-row v-for="(item,index) in activity.data"
 										:key="index">
 							<el-card class="box-card"
@@ -30,7 +30,7 @@
 										 @click="toTags(item)"
 										 v-for="(item,index) in item.tags"
 										 :key="index">
-										#{{ item }}
+										<span class="iconfont icon-label_fill"></span> {{ item }}
 									</a>
 								</div>
 								<!-- <div class="bottom clearfix">
@@ -40,7 +40,7 @@
 										 :key="index">
 										#{{ item }}
 									</a>
-								</!--> 
+								</!-->
 							</el-card>
 						</el-row>
 					</el-timeline-item>
@@ -116,7 +116,6 @@ export default {
 
 .box-card {
 	// margin: 10px
-
 	&:first-child {
 		margin-top: 20px
 	}
