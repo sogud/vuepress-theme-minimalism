@@ -124,7 +124,7 @@ module.exports = (options, ctx) => ({
       page.lastUpdated = lastUpdated
       page.path = path
 
-      sear.title = title
+      sear.value = title
       sear.path = path
       sear.strippedContent = _strippedContent
 
