@@ -1,7 +1,7 @@
 {
   "name": "vuepress-theme-minimalism",
   "description": "theme for vuepress",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "private": false,
   "keywords": [
