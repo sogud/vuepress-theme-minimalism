@@ -12,7 +12,7 @@
 							:lg="{span: 12}"
 							class="post-card">
 				<el-card class="box-card"
-								 shadow="hover">
+								 shadow="always">
 					<div slot="header"
 							 @click="toContent(item)"
 							 class="clearfix">

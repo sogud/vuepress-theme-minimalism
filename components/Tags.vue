@@ -18,7 +18,7 @@
 					<el-row v-for="(item,index) in hasTagsList"
 									:key="index">
 						<el-card class="box-card"
-										 shadow="hover">
+										 shadow="always">
 							<div slot="header"
 									 @click="toContent(item)"
 									 class="clearfix">

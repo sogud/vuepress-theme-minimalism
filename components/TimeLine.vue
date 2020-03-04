@@ -21,25 +21,11 @@
 						<el-row v-for="(item,index) in activity.data"
 										:key="index">
 							<el-card class="box-card"
-											 shadow="hover">
-								<div slot="header"
-										 @click="toContent(item)"
+											 shadow="always">
+								<div @click="toContent(item)"
 										 class="clearfix">
 									<div class="date-time">{{item.lastUpdated}}</div>
-									<el-popover placement="top"
-															v-if="$site.themeConfig.PostsListPopover"
-															:offset="155"
-															:title="item.title"
-															width="300"
-															trigger="hover"
-															:content="item.excerpt">
-										<div class="title"
-												 slot="reference">{{item.title}}</div>
-									</el-popover>
-									<div v-else
-											 class="title">{{item.title}}</div>
-								</div>
-								<div class="bottom clearfix">
+									<div class="title">{{item.title}}</div>
 									<a class="tag"
 										 @click="toTags(item)"
 										 v-for="(item,index) in item.tags"
@@ -47,6 +33,14 @@
 										#{{ item }}
 									</a>
 								</div>
+								<!-- <div class="bottom clearfix">
+									<a class="tag"
+										 @click="toTags(item)"
+										 v-for="(item,index) in item.tags"
+										 :key="index">
+										#{{ item }}
+									</a>
+								</!--> 
 							</el-card>
 						</el-row>
 					</el-timeline-item>
@@ -115,10 +109,49 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import './../styles/list'
-
 .time {
 	font-size: 1.4rem
 	color: #666
+}
+
+.box-card {
+	// margin: 10px
+
+	&:first-child {
+		margin-top: 20px
+	}
+
+	&:last-child {
+		margin-bottom: 10px
+	}
+
+	.date-time {
+		color: #ccc
+		margin: 10px 0 0px 30px
+		font-size: 0.75rem
+	}
+
+	.title {
+		font-size: 1.4rem
+		margin-left: 30px
+		color: #666
+		cursor: pointer
+
+		&:hover {
+			color: #9c396b
+			text-shadow: 1px 1px 1px #ddd
+		}
+	}
+
+	.tag {
+		color: $accentColor
+		margin-left: 30px
+		cursor: pointer
+
+		&:hover {
+			color: #9c396b
+			text-shadow: 1px 1px 1px #ddd
+		}
+	}
 }
 </style>

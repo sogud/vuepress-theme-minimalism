@@ -9,8 +9,7 @@
 						:md="{span: 20,offset:0}"
 						:lg="{span: 12}">
 			<div class="footer">
-				<span class="text">
-					©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>
+				<span class="text" v-html="$site.themeConfig.footerText">
 				</span>
 			</div>
 		</el-col>
@@ -29,16 +28,18 @@ export default {
 	background: $accentColor
 	position: relative
 	flex-shrink: 0
-	height: 7rem
+	height: 8rem
 	display: block
 	// width: 100%
 	color: $textColor
 	text-align: center
+	border-radius: 5px
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3)
 
 	.text {
 		text-align: center
 		position: relative
-		top: 3rem
+		top: 4rem
 
 		a {
 			color: $textColor
