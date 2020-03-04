@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import timeLineData from '@/data/TimeLine'
+import timeLineData from '@/data/timeLine'
 export default {
 	data() {
 		return {
