@@ -3,11 +3,11 @@
 		<el-row type="flex"
 						justify="center"
 						align="middle"
-						v-for="(item,index) in content"
+						v-for="(item,index) in list"
 						:key="index">
 			<el-col :span="24"
 							:xs="{span: 24}"
-							:sm="{span: 24}"
+							:sm="{span: 22}"
 							:md="{span: 20}"
 							:lg="{span: 12}"
 							class="post-card">
@@ -42,6 +42,26 @@
 				</el-card>
 			</el-col>
 		</el-row>
+		<el-row type="flex"
+						justify="center"
+						align="middle">
+
+			<el-col :span="24"
+							:xs="{span: 24}"
+							:sm="{span: 22}"
+							:md="{span: 20}"
+							:lg="{span: 12}"
+							class="post-card">
+				<el-pagination layout="prev, pager, next"
+											 :total="pageTotal"
+											 :current-page="currentPage"
+											 class="pagination"
+											 @current-change="handleCurrentChange"
+											 style="display: flex;justify-content: center;">
+				</el-pagination>
+			</el-col>
+		</el-row>
+
 	</div>
 </template>
 
@@ -52,7 +72,10 @@ export default {
 	name: 'List',
 	data() {
 		return {
-			content: content
+			list: [],
+			currentPage: 1,
+			content: content,
+			pageTotal: 0
 		}
 	},
 	computed: {
@@ -72,9 +95,16 @@ export default {
 		})
 	},
 	mounted() {
-    console.log("TCL: mounted -> this.$page", this.$page)
+		this.pageTotal = this.content.length
+		let list = JSON.parse(JSON.stringify(this.content))
+		this.list = list.splice(0, 10)
 	},
 	methods: {
+		handleCurrentChange(val) {
+			let list = JSON.parse(JSON.stringify(this.content))
+			this.list = list.splice((val - 1) * 10, 10)
+			this.currentPage = val
+		},
 		toContent(item) {
 			this.$router.push(item.path)
 		},
@@ -87,4 +117,13 @@ export default {
 
 <style lang="stylus" scoped>
 @import './../styles/list'
+
+.pagination >>> .el-pager li.active {
+	color: $accentColor
+	cursor: default
+}
+
+.pagination >>> .el-pager li:hover {
+	color: $accentColor
+}
 </style>

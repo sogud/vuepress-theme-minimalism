@@ -2,45 +2,104 @@
 	<el-row type="flex"
 					justify="center"
 					align="middle">
-		<el-col :span="18"
+		<el-col :span="24"
 						:xs="{span: 24}"
-						:sm="{span: 24,offset: 6}"
-						:md="{span: 18,offset:0}"
+						:sm="{span: 22}"
+						:md="{span: 20}"
 						:lg="{span: 12}">
 			<div class="header">
 				<div class="container">
-					<router-link to="/list">
-						<span class="iconfont icon-sort"></span>
-						{{$site.themeConfig.headerText.all}}
-					</router-link>
-					<router-link to="/tags">
-						<span class="iconfont icon-label_fill"></span>
-						{{$site.themeConfig.headerText.tags}}
-					</router-link>
-					<router-link to="/timeline">
-						<span class="iconfont icon-schedule"></span>
-						{{$site.themeConfig.headerText.timeline}}
-					</router-link>
-					<router-link to="/">
-						<span class="iconfont icon-home"></span>
-						{{$site.themeConfig.headerText.index}}
-					</router-link>
-					<span class="search">
-						<span class="iconfont icon-nav-search"></span>
-						<el-autocomplete class="inline-input"
-														 v-model="searchValue"
-														 :fetch-suggestions="querySearch"
-														 :trigger-on-focus="false"
-														 @select="handleSelect"></el-autocomplete>
-						{{$site.themeConfig.headerText.seacrh}}
-					</span>
+					<el-row type="flex"
+									class="row-bg"
+									justify="space-between">
+						<el-col :span="16"
+										:sm="16"
+										:md="16"
+										:lg="14"
+										:xl="16"
+										class="hidden-xs-only">
+							<div class="link-group">
+								<router-link to="/list">
+									<span class="iconfont icon-sort"></span>
+									<span>{{$site.themeConfig.headerText.all}}</span>
+								</router-link>
+								<router-link to="/tags">
+									<span class="iconfont icon-label_fill"></span>
+									<span>{{$site.themeConfig.headerText.tags}}</span>
+								</router-link>
+								<router-link to="/timeline">
+									<span class="iconfont icon-schedule"></span>
+									<span>{{$site.themeConfig.headerText.timeline}}</span>
+								</router-link>
+								<router-link to="/">
+									<span class="iconfont icon-home"></span>
+									<span>{{$site.themeConfig.headerText.index}}</span>
+								</router-link>
+							</div>
+
+						</el-col>
+						<el-col :xs="5"
+										class="hidden-sm-and-up">
+							<i class="el-icon-menu"
+								 @click="drawer = true"></i>
+						</el-col>
+						<el-col :span="8"
+										:xs="22"
+										:sm="8"
+										:md="8"
+										:lg="10"
+										:xl="8">
+							<span class="search">
+								<span class="iconfont icon-nav-search"></span>
+								<el-autocomplete class="inline-input"
+																 v-model="searchValue"
+																 :fetch-suggestions="querySearch"
+																 :trigger-on-focus="false"
+																 @select="handleSelect"></el-autocomplete>
+								{{$site.themeConfig.headerText.seacrh}}
+							</span>
+						</el-col>
+					</el-row>
+					<el-drawer title="我是标题"
+										 :visible.sync="drawer"
+										 :with-header="false">
+						<el-menu class="el-menu-vertical"
+										 @select="drawer=false">
+							<el-menu-item index="1">
+								<router-link to="/list">
+									<span class="iconfont icon-sort"></span>
+									<span>{{$site.themeConfig.headerText.all}}</span>
+								</router-link>
+							</el-menu-item>
+							<el-menu-item index="2">
+								<router-link to="/tags">
+									<span class="iconfont icon-label_fill"></span>
+									<span>{{$site.themeConfig.headerText.tags}}</span>
+								</router-link>
+							</el-menu-item>
+							<el-menu-item index="3">
+								<router-link to="/timeline">
+									<span class="iconfont icon-schedule"></span>
+									<span>{{$site.themeConfig.headerText.timeline}}</span>
+								</router-link>
+							</el-menu-item>
+							<el-menu-item index="4">
+								<router-link to="/">
+									<span class="iconfont icon-home"></span>
+									<span>{{$site.themeConfig.headerText.index}}</span>
+								</router-link>
+							</el-menu-item>
+						</el-menu>
+					</el-drawer>
 				</div>
+			</div>
 			</div>
 		</el-col>
 	</el-row>
 </template>
 
 <script>
+import 'element-ui/lib/theme-chalk/display.css'
 import searchList from '@/data/search'
 import '@/styles/icon/iconfont.css'
 export default {
@@ -48,7 +107,8 @@ export default {
 	data() {
 		return {
 			searchValue: '',
-			restaurants: searchList
+			restaurants: searchList,
+			drawer: false
 		}
 	},
 	mounted() {
@@ -103,17 +163,17 @@ export default {
 		color: #fff
 
 		.search {
-			float: right
-
 			span {
 				cursor: pointer
 			}
 		}
 
-		a {
-			font-size: 1rem
-			margin: 0 3px
-			color: #fff
+		.link-group {
+			a {
+				font-size: 1rem
+				margin: 0 3px
+				color: #fff
+			}
 		}
 	}
 }
@@ -136,5 +196,9 @@ export default {
 	padding: 0 0px
 	transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)
 	width: 100%
+}
+
+.el-menu-vertical {
+	color: #ccc
 }
 </style>

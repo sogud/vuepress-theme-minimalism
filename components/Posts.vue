@@ -6,21 +6,21 @@
 							class="hidden-xs-only"
 							:xs="{span: 5}"
 							:sm="{span: 5}"
-							:md="{span: 5}"
+							:md="{span: 3}"
 							:lg="{span: 5}">
 				<div class="toc"
 						 ref="toc">
-						<TOC :class="titleFixed == true ? 'isFixed' :''"></TOC>
+					<TOC :class="titleFixed == true ? 'isFixed' :''"></TOC>
 				</div>
 			</el-col>
 			<el-col :span="18"
 							:offset="1"
 							:xs="{span: 24}"
-							:sm="{span: 24}"
-							:md="{span: 18}"
-							:lg="{span: 12}">
-				<div class="content-container">			
-						<Content></Content>
+							:sm="{span: 18,offset:0}"
+							:md="{span: 18,offset:0}"
+							:lg="{span: 12,offset:1}">
+				<div class="content-container">
+					<Content></Content>
 				</div>
 			</el-col>
 
@@ -30,7 +30,7 @@
 						align="middle">
 			<el-col :span="18"
 							:xs="{span: 18}"
-							:sm="{span: 23,offset: 6}"
+							:sm="{span: 23,offset: 0}"
 							:md="{span: 18,offset:0}"
 							:lg="{span: 12}">
 				<my-comment />
