@@ -1,7 +1,7 @@
 <template>
 	<div class="theme-container"
 			 :class="isDark?'dark':''">
-		<div class="dark-icon"
+		<div class="dark-icon hidden-xs-only"
 				 v-if="themeConfig.darkMode.switch"
 				 @click="isDark=!isDark">
 			<span v-if="isDark"
@@ -28,6 +28,7 @@
 	</div>
 </template>
 <script>
+import 'element-ui/lib/theme-chalk/display.css'
 import moment from 'moment'
 import '@/styles/icon/iconfont.css'
 import Home from '@/components/Home'
@@ -112,38 +113,42 @@ export default {
 @import './../styles/animeition'
 @import './../styles/dark'
 
-.dark-icon {
-	position: fixed
-	top: 0
-	right: 0
-	z-index: 100
+.theme-container {
+	min-width: 377px
+	overflow hidden
+	.dark-icon {
+		position: fixed
+		top: 0
+		right: 0
+		z-index: 100
 
-	span {
-		font-size: 3rem
-		color: #e6a23c
-		cursor: pointer
+		span {
+			font-size: 3rem
+			color: #e6a23c
+			cursor: pointer
+		}
+
+		.icon-dark {
+			cursor: pointer
+			width: 3rem
+			height: 3rem
+		}
 	}
 
-	.icon-dark {
-		cursor: pointer
-		width: 3rem
-		height: 3rem
+	.el-header, .el-footer {
+		background-color: #B3C0D1
+		color: #333
+		text-align: center
+		line-height: 60px
 	}
-}
 
-.el-header, .el-footer {
-	background-color: #B3C0D1
-	color: #333
-	text-align: center
-	line-height: 60px
-}
-
-#evanyou {
-	position: fixed
-	width: 100%
-	height: 100%
-	top: 0
-	left: 0
-	z-index: -1
+	#evanyou {
+		position: fixed
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+		z-index: -1
+	}
 }
 </style>
