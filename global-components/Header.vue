@@ -181,7 +181,7 @@ export default {
 .search >>> .el-input__inner {
 	display: none
 	-webkit-appearance: none
-	background-color: #31837c
+	background-color: $accentColor
 	background-image: none
 	border-radius: 0px
 	border: 0px solid #DCDFE6

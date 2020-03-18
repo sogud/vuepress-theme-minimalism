@@ -24,17 +24,6 @@
 					<span class="iconfont icon-home"></span>
 					{{$site.themeConfig.headerText.index}}
 				</router-link>
-				<!-- <NavLink class="action-button title"
-								 :item="actionLink" /> -->
-				<!-- <img v-if="data.heroImage"
-					 :src="$withBase(data.heroImage)"
-					 :alt="data.heroAlt || 'hero'"> -->
-
-				<!-- <p class="action"
-				 v-if="data.actionText && data.actionLink">
-				<NavLink class="action-button"
-								 :item="actionLink" />
-			</p> -->
 			</div>
 		</transition>
 	</main>
@@ -61,12 +50,6 @@ export default {
 					backgroundSize: 'cover',
 					backgroundPosition: 'center'
 				}
-			}
-		},
-		actionLink() {
-			return {
-				link: this.data.actionLink,
-				text: this.data.actionText
 			}
 		}
 	},

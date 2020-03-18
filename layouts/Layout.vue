@@ -1,24 +1,29 @@
 <template>
 	<div class="theme-container"
 			 :class="isDark?'dark':''">
-		<div class="dark-icon hidden-xs-only"
-				 v-if="themeConfig.darkMode.switch"
-				 @click="isDark=!isDark">
-			<span v-if="isDark"
-						class="iconfont icon-yueliang"></span>
-			<span v-else
-						class="iconfont icon-taiyang"></span>
+		<div v-if="$route.path !== '/'">
+			<div class="dark-icon hidden-xs-only"
+					 v-if="themeConfig.darkMode.switch"
+					 @click="isDark=!isDark">
+				<span v-if="isDark"
+							class="iconfont icon-yueliang"></span>
+				<span v-else
+							class="iconfont icon-taiyang"></span>
+			</div>
 		</div>
 		<transition name="custom-classes-transition"
 								enter-active-class="animated fadeIn">
-			<Home v-if="$page.path == '/'" />
+			<Home v-if="$route.path == '/'" />
+			<!-- <Home /> -->
+			<!-- <router-view></router-view> -->
 			<div v-else>
 				<Header />
 				<el-container>
 					<el-main>
-						<!-- <keep-alive> -->
-						<component :is="whichComponent"></component>
-						<!-- </keep-alive> -->
+						<keep-alive>
+							<!-- <router-view></router-view> -->
+							<component :is="whichComponent"></component>
+						</keep-alive>
 					</el-main>
 				</el-container>
 				<BackTop />
@@ -55,11 +60,11 @@ export default {
 		},
 		whichComponent() {
 			const compArr = ['List', 'All', 'Posts', 'TimeLine', 'Tags']
-			const Path = this.$page.relativePath
-
+			const Path = this.$route.path
 			let comp = ''
 			compArr.forEach(item => {
-				if (Path.includes(item)) {
+				Path.includes(item)
+				if (Path.includes(item.toLowerCase())) {
 					comp = item
 				}
 			})
@@ -102,10 +107,8 @@ export default {
 			console.log('%c' + item, 'color: #399c9c')
 		})
 		// evanyou()
-		const cursorSpecialEffects = new CursorSpecialEffects()
-		cursorSpecialEffects.init()
-		console.log('TCL: whichComponent -> this.$page.', this.$page, this.$site)
-		console.log('TCL: whichComponent -> whichComponent', this.whichComponent)
+		// const cursorSpecialEffects = new CursorSpecialEffects()
+		// cursorSpecialEffects.init()
 	}
 }
 </script>
@@ -115,7 +118,8 @@ export default {
 
 .theme-container {
 	min-width: 377px
-	overflow hidden
+	overflow: hidden
+
 	.dark-icon {
 		position: fixed
 		top: 0
