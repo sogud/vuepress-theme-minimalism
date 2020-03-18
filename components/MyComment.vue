@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import VueDisqus from 'vue-disqus'
 import { VssueComponent } from 'vssue'
 import GithubV3 from '@vssue/api-github-v3'
 import 'vssue/dist/vssue.css'
@@ -21,7 +20,6 @@ export default {
 	name: 'MyComment',
 	components: {
 		Vssue: VssueComponent,
-		Disqus: VueDisqus
 	},
 	data() {
 		return {
