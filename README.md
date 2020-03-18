@@ -28,13 +28,7 @@ module.exports = {
 }
 ```
 
-- 新建 index.md 文件,空内容即可。
-- 新建 List.md 文件,空内容即可。
-- 新建 Tags.md 文件,空内容即可。
-- 新建 TimeLine.md 文件,空内容即可。
-- 新建 Posts 文件夹，文章写在 Posts 目录。
-
-注：区分大小写。
+- 新建 posts 文件夹，文章写在 posts 目录,因为该主题根据 posts 文件夹下内容进行编译。注：文件夹名称区分大小写。
 
 #### 目录结构
 
@@ -42,11 +36,7 @@ module.exports = {
 .
 ├── docs
 │   ├── .vuepress #vuepress配置文件夹
-│   ├── List.md #列表
-│   ├── Posts #文章存放文件夹
-│   ├── Tags.md #标签页
-│   ├── TimeLine.md #时间线
-│   └── index.md #首页
+│   ├── posts #文章存放文件夹
 ├── package.json
 └── yarn.lock
 ```
@@ -78,7 +68,7 @@ tags:
 
 目前支持以下几个颜色配置：
 
-```CSS
+``` stylus
 $accentColor = #31837c //主题色
 $textColor = #2c3e50 //文字颜色
 $nprogressColor = #399c9c //nprogress颜色
@@ -120,14 +110,21 @@ module.exports = {
     },
     vssue: {
       //评论组件
+      use: false,
       option: {
         owner: 'onnezezt',
         repo: 'onnezezt.github.io',
         clientId: 'xxxx',
         clientSecret: 'xxxx' // 只有在使用某些平台时需要
       }
+    }，
+    disqus: {
+      //开启disqus评论
+      use: false,
+      option: {
+        name: '1net-1' // Replace PAGE_URL with your page's canonical URL variable
+      }
     }
-    // sidebar: 'auto',
   },
   markdown: {
     lineNumbers: true
