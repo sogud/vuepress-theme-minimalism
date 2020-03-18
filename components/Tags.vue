@@ -12,9 +12,11 @@
 					<el-tag @click="toTags(tag)"
 									class="tags"
 									v-for="(tag, index) in tagsList"
-									:style="randomRgb()"
 									:key="index"
-									size="medium">{{tag[0].name}}</el-tag>
+									size="medium">
+						<span class="iconfont icon-label_fill"></span>
+						{{tag[0].name}}
+					</el-tag>
 					<el-row v-for="(item,index) in hasTagsList"
 									:key="index">
 						<el-card class="box-card"
@@ -115,7 +117,9 @@ export default {
 
 	.tags {
 		margin: 5px
-		color: #fff
+		font-size: 1em
+		color: $accentColor
+		background-color: #fff
 		border: none
 		cursor: pointer
 	}

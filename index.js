@@ -34,11 +34,7 @@ module.exports = (options, ctx) => ({
     '@': path.resolve(__dirname)
   },
   async ready() {
-    // path.resolve(__dirname)
-    // const postsFilter = val => val.path.slice(1, 4) === 'doc'
-    const postsFilter = val => val.path.slice(1, 6) === 'Posts'
-    // const postsFilter = val => console.log(val.path.slice(1, 6))
-    // console.log("TCL: ready -> postsFilter", postsFilter)
+    const postsFilter = val => val.path.slice(1, 6) === 'posts'
 
     const postsSorter = (prev, next) => {
       const prevTime =
@@ -188,15 +184,12 @@ module.exports = (options, ctx) => ({
     })
 
     const dataPath = path.resolve(__dirname, 'data')
-    console.log('正在写入本地数据,加快在客户端的速度~~')
-
     fs.writeFile(
       `${dataPath}/content.js`,
       `export default ${JSON.stringify(archived, null, 2)};`,
       error => {
         if (error)
           return console.log('写入首页content文件失败,原因是' + error.message)
-        console.log('写入首页content文件成功')
       }
     )
 
@@ -208,7 +201,6 @@ module.exports = (options, ctx) => ({
           return console.log(
             '写入标签页tagsList文件失败,原因是' + error.message
           )
-        console.log('写入标签页tagsList文件成功')
       }
     )
 
@@ -218,7 +210,6 @@ module.exports = (options, ctx) => ({
       error => {
         if (error)
           return console.log('写入搜索search文件失败,原因是' + error.message)
-        console.log('写入搜索search文件成功')
       }
     )
 
@@ -227,8 +218,9 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(timeLine, null, 2)};`,
       error => {
         if (error)
-          return console.log('写入时间线timeLinet文件失败,原因是' + error.message)
-        console.log('写入时间线timeLine文件成功')
+          return console.log(
+            '写入时间线timeLinet文件失败,原因是' + error.message
+          )
       }
     )
   }
