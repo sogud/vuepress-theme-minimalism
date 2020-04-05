@@ -1355,6 +1355,21 @@ vuepress-plugin-table-of-contents@^1.1.5:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-table-of-contents/-/vuepress-plugin-table-of-contents-1.1.5.tgz#6c3540c24a84e0eeaf67cbe734c118f0194454d6"
   integrity sha512-OiUqmMq/+oB3Q9IJ3y+mzurSBmQZ6VvW5j9EiIDeo2FBo4/OJ2zhPeCw0gpUcln07qJOKBPLVYzfSt3J30g9dg==
 
+vuepress-theme-minimalism@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-minimalism/-/vuepress-theme-minimalism-1.0.13.tgz#5e904740a1010a2e09e466807ae70a48a4ff350d"
+  integrity sha512-Vi/zdbpXP5U4xg7t/hs0n1E3TOybS0FFkFOJuyaEvQjdF61VjPkzpLkAPP+FkMy0jYZiwBMtarJEH54AyaCfnQ==
+  dependencies:
+    "@vssue/api-github-v3" "^1.4.0"
+    "@vssue/vuepress-plugin-vssue" "^1.4.2"
+    canvas-nest.js "^2.0.4"
+    element-ui "^2.13.0"
+    moment "^2.24.0"
+    vssue "^1.4.2"
+    vuepress-plugin-helper-live2d "^1.0.0"
+    vuepress-plugin-live2d "^0.0.7"
+    vuepress-plugin-table-of-contents "^1.1.5"
+
 workbox-background-sync@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/workbox-background-sync/-/workbox-background-sync-4.3.1.tgz#26821b9bf16e9e37fd1d640289edddc08afd1950"
