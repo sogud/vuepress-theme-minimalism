@@ -1,4 +1,4 @@
-import Layout from '@/layouts/layout'
+import Layout from './layouts/layout'
 
 const install = (Vue, { router }) => {
   let rules = ['/', '/list', '/tags/', '/timeline/', '/posts']
