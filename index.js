@@ -2,6 +2,14 @@ const path = require('path')
 const moment = require('moment')
 const fs = require('fs')
 module.exports = (options, ctx) => ({
+  additionalPages: [
+    {
+      regularPath: '/',
+      relativePath: 'index.md',
+      key: '0',
+      path: '/'
+    }
+  ],
   plugins: [
     [
       '@vuepress/pwa',
@@ -14,7 +22,7 @@ module.exports = (options, ctx) => ({
     [
       '@vuepress/last-updated',
       {
-        transformer: timestamp => {
+        transformer: (timestamp) => {
           const moment = require('moment')
           moment.locale('zh-CN')
           return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
@@ -34,7 +42,7 @@ module.exports = (options, ctx) => ({
     '@': path.resolve(__dirname)
   },
   async ready() {
-    const postsFilter = val => val.path.slice(1, 6) === 'posts'
+    const postsFilter = (val) => val.path.slice(1, 6) === 'posts'
 
     const postsSorter = (prev, next) => {
       const prevTime =
@@ -76,6 +84,7 @@ module.exports = (options, ctx) => ({
     const posts = pages.filter(postsFilter)
     // const posts = pages.forEach(postsFilter)
     // const posts = pages
+
     posts.sort(postsSorter)
 
     let archived = [] //全部文章
@@ -142,7 +151,7 @@ module.exports = (options, ctx) => ({
       } else {
         // tags是数组
         if (tags instanceof Array) {
-          tags.forEach(tag => {
+          tags.forEach((tag) => {
             if (tag === undefined) {
               if (!tagsList['未分类']) {
                 tagsList['未分类'] = [{ name: '未分类' }]
@@ -187,7 +196,7 @@ module.exports = (options, ctx) => ({
     fs.writeFile(
       `${dataPath}/content.js`,
       `export default ${JSON.stringify(archived, null, 2)};`,
-      error => {
+      (error) => {
         if (error)
           return console.log('写入首页content文件失败,原因是' + error.message)
       }
@@ -196,7 +205,7 @@ module.exports = (options, ctx) => ({
     fs.writeFile(
       `${dataPath}/tagsList.js`,
       `export default ${JSON.stringify(tagsList, null, 2)};`,
-      error => {
+      (error) => {
         if (error)
           return console.log(
             '写入标签页tagsList文件失败,原因是' + error.message
@@ -207,7 +216,7 @@ module.exports = (options, ctx) => ({
     fs.writeFile(
       `${dataPath}/search.js`,
       `export default ${JSON.stringify(search, null, 2)};`,
-      error => {
+      (error) => {
         if (error)
           return console.log('写入搜索search文件失败,原因是' + error.message)
       }
@@ -216,7 +225,7 @@ module.exports = (options, ctx) => ({
     fs.writeFile(
       `${dataPath}/timeLine.js`,
       `export default ${JSON.stringify(timeLine, null, 2)};`,
-      error => {
+      (error) => {
         if (error)
           return console.log(
             '写入时间线timeLinet文件失败,原因是' + error.message
