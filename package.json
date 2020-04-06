@@ -29,7 +29,6 @@
     "vssue": "^1.4.2",
     "vuepress-plugin-helper-live2d": "^1.0.0",
     "vuepress-plugin-live2d": "^0.0.7",
-    "vuepress-plugin-table-of-contents": "^1.1.5",
-    "vuepress-theme-minimalism": "^1.0.13"
+    "vuepress-plugin-table-of-contents": "^1.1.5"
   }
 }
