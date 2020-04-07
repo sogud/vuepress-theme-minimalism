@@ -6,8 +6,22 @@ module.exports = (options, ctx) => ({
     {
       regularPath: '/',
       relativePath: 'index.md',
-      key: '0',
       path: '/'
+    },
+    {
+      regularPath: '/list/index.html',
+      relativePath: '/list/index.md',
+      path: '/list/index.html'
+    },
+    {
+      regularPath: '/tags/index.html',
+      relativePath: '/tags/index.md',
+      path: '/tags/index.html'
+    },
+    {
+      regularPath: '/timeline/index.html',
+      relativePath: '/timeline/index.md',
+      path: '/timeline/index.html'
     }
   ],
   plugins: [

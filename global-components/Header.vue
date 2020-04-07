@@ -19,15 +19,15 @@
 										:xl="16"
 										class="hidden-xs-only">
 							<div class="link-group">
-								<router-link to="/list">
+								<router-link to="/list/">
 									<span class="iconfont icon-sort"></span>
 									<span>{{$site.themeConfig.headerText.all}}</span>
 								</router-link>
-								<router-link to="/tags">
+								<router-link to="/tags/">
 									<span class="iconfont icon-label_fill"></span>
 									<span>{{$site.themeConfig.headerText.tags}}</span>
 								</router-link>
-								<router-link to="/timeline">
+								<router-link to="/timeline/">
 									<span class="iconfont icon-schedule"></span>
 									<span>{{$site.themeConfig.headerText.timeline}}</span>
 								</router-link>
