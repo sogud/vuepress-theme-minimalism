@@ -1,5 +1,5 @@
 import ElementUI from 'element-ui/lib'
-import routes from '@/router/routes'
+import routes from './router/routes'
 import 'element-ui/lib/theme-chalk/index.css'
 export default ({
   Vue, // the version of Vue being used in the VuePress app
