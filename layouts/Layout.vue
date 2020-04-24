@@ -63,7 +63,6 @@ export default {
 			const Path = this.$route.path
 			let comp = ''
 			compArr.forEach(item => {
-				Path.includes(item)
 				if (Path.includes(item.toLowerCase())) {
 					comp = item
 				}
