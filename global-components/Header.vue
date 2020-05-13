@@ -160,6 +160,7 @@ export default {
 		text-align: left
 		padding: 0 60px
 		line-height: 8rem
+		height: 8rem
 		color: #fff
 
 		.search {
