@@ -28,7 +28,7 @@ module.exports = {
 }
 ```
 
-- 新建 posts 文件夹，文章写在 posts 目录,因为该主题根据 posts 文件夹下内容进行编译。注：文件夹名称区分大小写。
+- 新建 _posts 文件夹，文章写在 _posts 目录,因为该主题根据 _posts 文件夹下内容进行编译。注：文件夹名称区分大小写。
 
 #### 目录结构
 
@@ -36,7 +36,7 @@ module.exports = {
 .
 ├── docs
 │   ├── .vuepress #vuepress配置文件夹
-│   ├── posts #文章存放文件夹
+│   ├── _posts #文章存放文件夹
 ├── package.json
 └── yarn.lock
 ```
@@ -98,7 +98,7 @@ module.exports = {
       //首页背景颜色
       //设置主页背景颜色，false title为默认颜色
       show: true,
-      fileName: '/65231299_p0.jpg' // 背景图片名称，存放在public目录下
+      fileName: '/xxx.jpg' // 背景图片名称，存放在public目录下
     },
     PostsListPopover: false, //是否显示文章内容提示
     darkMode: {
@@ -122,7 +122,7 @@ module.exports = {
       //开启disqus评论
       use: false,
       option: {
-        name: '1net-1' // Replace PAGE_URL with your page's canonical URL variable
+        name: 'xxx' // Replace PAGE_URL with your page's canonical URL variable
       }
     }
   },
