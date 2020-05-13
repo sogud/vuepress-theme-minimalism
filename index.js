@@ -56,7 +56,9 @@ module.exports = (options, ctx) => ({
     '@': path.resolve(__dirname)
   },
   async ready() {
-    const postsFilter = (val) => val.path.slice(1, 6) === 'posts'
+    const { pages } = ctx
+
+    const postsFilter = (val) => val.path.slice(1, 7) === '_posts'
 
     const postsSorter = (prev, next) => {
       const prevTime =
@@ -69,10 +71,8 @@ module.exports = (options, ctx) => ({
         new Date().getTime()
       return prevTime - nextTime > 0 ? -1 : 1
     }
-    const { pages } = ctx
-    // console.log("TCL: ready -> pages", pages)
 
-    function changeDate(dateStr) {
+    const changeDate = (dateStr) => {
       if (dateStr.length === undefined) {
         let str = JSON.stringify(dateStr, null, 2)
         return str.slice(1, 11) + ' ' + str.slice(12, -6)
@@ -81,30 +81,22 @@ module.exports = (options, ctx) => ({
       }
     }
 
-    function changeTime(dateStr) {
+    const changeTime = (dateStr) => {
       let str = ''
       str = dateStr.slice(0, 7)
       const arr = str.split('-')
       let result = [arr[0] + '-' + arr[1], Number(arr[0]) + Number(arr[1])]
       return result
     }
-    // function lastDataGetMonth(dateStr) {
-    //   let str = ''
-    //   str = dateStr.slice(0, 7)
-    //   const arr = str.split('-')
-    //   let result = [arr[0] + '-' + arr[1], Number(arr[0]) + Number(arr[1])]
-    //   return str
-    // }
+
     const posts = pages.filter(postsFilter)
-    // const posts = pages.forEach(postsFilter)
-    // const posts = pages
 
     posts.sort(postsSorter)
 
-    let archived = [] //全部文章
-    let tagsList = {} //分类标签列表
-    let timeLine = [] //时间归档列表
-    let search = [] //搜索列表
+    let archived = []
+    let tagsList = {}
+    let timeLine = []
+    let search = []
 
     posts.forEach((val, index) => {
       let page = {}
@@ -212,7 +204,7 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(archived, null, 2)};`,
       (error) => {
         if (error)
-          return console.log('写入首页content文件失败,原因是' + error.message)
+          return console.error('写入首页content文件失败,原因是' + error.message)
       }
     )
 
@@ -221,7 +213,7 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(tagsList, null, 2)};`,
       (error) => {
         if (error)
-          return console.log(
+          return console.error(
             '写入标签页tagsList文件失败,原因是' + error.message
           )
       }
@@ -232,7 +224,7 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(search, null, 2)};`,
       (error) => {
         if (error)
-          return console.log('写入搜索search文件失败,原因是' + error.message)
+          return console.error('写入搜索search文件失败,原因是' + error.message)
       }
     )
 
@@ -241,7 +233,7 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(timeLine, null, 2)};`,
       (error) => {
         if (error)
-          return console.log(
+          return console.error(
             '写入时间线timeLinet文件失败,原因是' + error.message
           )
       }
