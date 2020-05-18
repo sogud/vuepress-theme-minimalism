@@ -1,4 +1,5 @@
 # vuepress-theme-minimalism
+[中文](https://github.com/onnezezt/vuepress-theme-minimalism/blob/master/Zh.md)
 
 ![NPM](https://img.shields.io/npm/l/vuepress-theme-minimalism) 
 <a href="https://www.npmjs.com/package/vuepress-theme-minimalism"> <img src="https://img.shields.io/npm/v/vuepress-theme-minimalism" alt=""></a>
@@ -32,7 +33,7 @@ module.exports = {
 
 - new _posts folder, article written in _posts directory, as the topic is compiled based on the content under the _posts folder. Note: Folder names are case-sensitive.
 
-#### 目录结构
+#### Directory Structure
 
 ```
 .
@@ -43,7 +44,7 @@ module.exports = {
 └── yarn.lock
 ```
 
-#### 书写
+#### write
 
 Start writing a blog that is written in the correct format as follows.：
 
@@ -62,9 +63,9 @@ tags:
 A minimalist vuepress theme, compatible with hexo YAML front matter syntax.
 ```
 
-## 主题配置
+## Theme configuration
 
-#### 主题颜色配置
+#### Theme color configuration
 
 New styles folder in .vuepress directory, new palette.styl Configure css variables.
 
