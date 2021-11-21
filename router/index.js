@@ -1,21 +1,34 @@
-import Layout from '../layouts/Layout.vue'
+import Layout from "../layouts/Layout.vue"
 
 const install = (Vue, { router }) => {
-  let rules = ['/', '/list/', '/tags/', '/timeline/', '/posts/']
-  const routes = []
-
-  for (var i = 0, len = rules.length; i < len; i++) {
-    routes.push({
-      name: rules[i],
-      path: rules[i],
+  const routes = [
+    {
+      name: "/",
+      path: "/",
       component: Layout
-    })
-  }
+    },
+    {
+      name: "list",
+      path: "/list",
+      component: Layout
+    },
+    {
+      name: "tags",
+      path: "/tags",
+      component: Layout
+    },
+    {
+      name: "timeline",
+      path: "/timeline",
+      component: Layout
+    }
+  ]
 
   router.addRoutes(routes)
+
   router.beforeEach((to, from, next) => {
-    next();
-  });
+    next()
+  })
 }
 
 export default {

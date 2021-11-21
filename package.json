@@ -18,7 +18,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-pwa": "^1.2.0"
+    "@vuepress/plugin-blog": "^1.9.4",
+    "@vuepress/plugin-pwa": "^1.2.0",
+    "@vuepress/plugin-search": "^1.8.2"
   },
   "dependencies": {
     "@vssue/api-github-v3": "^1.4.0",
@@ -26,6 +28,7 @@
     "canvas-nest.js": "^2.0.4",
     "element-ui": "^2.13.0",
     "moment": "^2.24.0",
+    "path-to-regexp": "^6.2.0",
     "vssue": "^1.4.2",
     "vuepress-plugin-helper-live2d": "^1.0.0",
     "vuepress-plugin-live2d": "^0.0.7",
