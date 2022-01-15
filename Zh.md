@@ -6,9 +6,9 @@
 
 ## 介绍
 
-一款简洁的 vuepress 主题，兼容 hexo YAML front matter 语法。
+一款简洁的 vuepress 主题，使用 YAML front matter 语法。
 
-预览地址：https://1net.world
+preview：https://sogud.github.io
 
 ## 快速上手
 
@@ -30,7 +30,7 @@ module.exports = {
 }
 ```
 
-- 新建 _posts 文件夹，文章写在 _posts 目录,因为该主题根据 _posts 文件夹下内容进行编译。注：文件夹名称区分大小写。
+- 新建 posts 文件夹，文章写在 posts 目录,因为该主题根据 posts 文件夹下内容进行编译。注：文件夹名称区分大小写。
 
 #### 目录结构
 
@@ -38,7 +38,7 @@ module.exports = {
 .
 ├── docs
 │   ├── .vuepress #vuepress配置文件夹
-│   ├── _posts #文章存放文件夹
+│   ├── posts #文章存放文件夹
 ├── package.json
 └── yarn.lock
 ```
