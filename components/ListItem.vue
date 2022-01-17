@@ -1,14 +1,10 @@
 <template>
   <div class="title-box">
-    <div @click="toContent(item)">
-      <div class="title">{{ item.title }}</div>
-      <div class="date-time">{{ item.lastUpdated }}</div>
-    </div>
-    <div>
-      <a class="tag" @click="toTags(item)" v-for="(item, index) in item.tags" :key="index">
-        <span>{{ item }}</span>
-      </a>
-    </div>
+    <div class="title" @click="toContent(item)">{{ item.title }}</div>
+    <div class="date-time">{{ item.lastUpdated }}</div>
+    <a class="tag" @click="toTags(item)" v-for="(item, index) in item.tags" :key="index">
+      <span>{{ item }}</span>
+    </a>
   </div>
 </template>
 
@@ -57,7 +53,8 @@ export default {
 
   .date-time {
     color: #ccc
-    font-size: 0.7rem
+    font-size: 0.6rem
+    margin-bottom: 5px
   }
 
   .title {

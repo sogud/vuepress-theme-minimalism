@@ -2,16 +2,18 @@
   <el-row type="flex" justify="center" align="middle">
     <el-col :span="24" :xs="{ span: 24 }" :sm="{ span: 24 }" :md="{ span: 20 }" :lg="{ span: 12 }">
       <div class="container">
-        <el-tag
-          @click="toTags(tag)"
-          class="tags"
-          v-for="(tag, index) in tagsList"
-          :key="index"
-          size="medium"
-        >
-          <span class="iconfont icon-label_fill"></span>
-          {{ tag[0].name }}
-        </el-tag>
+        <div class="tag-box">
+          <el-tag
+            @click="toTags(tag)"
+            class="tags"
+            v-for="(tag, index) in tagsList"
+            :key="index"
+            size="medium"
+          >
+            {{ tag[0].name }}
+          </el-tag>
+        </div>
+
         <el-row v-for="(item, index) in hasTagsList" :key="index">
           <ListItem :item="item" />
         </el-row>
@@ -70,14 +72,17 @@ export default {
 
 .container {
 	min-height: 40vh
-
-	.tags {
-		margin: 5px
-		font-size: 1em
-		color: $accentColor
-		background-color: $backgroundColor
-		border: none
-		cursor: pointer
-	}
+  .tag-box{
+    position relative
+    left: -15px
+    .tags {
+      margin: 5px
+      font-size: 1em
+      color: $accentColor
+      background-color: $backgroundColor
+      border: none
+      cursor: pointer
+    }
+  }
 }
 </style>

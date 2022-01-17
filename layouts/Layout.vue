@@ -34,8 +34,6 @@ import BackTop from "@/components/BackTop"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 
-import { CursorSpecialEffects } from "@/util/fireworks.js"
-
 export default {
   components: { Home, List, Posts, BackTop, Tags, TimeLine, Header, Footer },
   data() {

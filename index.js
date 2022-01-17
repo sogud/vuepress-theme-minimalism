@@ -64,14 +64,14 @@ module.exports = (themeConfig, ctx) => {
             return moment(timestamp).format("YYYY-MM-DD HH:mm:ss")
           }
         }
+      ],
+      [
+        ("vuepress-plugin-live2d",
+        {
+          modelName: "izumi",
+          mobileShow: false
+        })
       ]
-      // [
-      //   "vuepress-plugin-live2d",
-      //   {
-      //     modelName: "izumi",
-      //     mobileShow: false
-      //   }
-      // ]
     ],
     enhanceAppFiles: path.resolve(__dirname, "enhanceApp.js"),
     alias: {
