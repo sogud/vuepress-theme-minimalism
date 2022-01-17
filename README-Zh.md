@@ -1,8 +1,6 @@
 # vuepress-theme-minimalism
 
-![NPM](https://img.shields.io/npm/l/vuepress-theme-minimalism) 
-<a href="https://www.npmjs.com/package/vuepress-theme-minimalism"> <img src="https://img.shields.io/npm/v/vuepress-theme-minimalism" alt=""></a>
-<a href="https://www.npmjs.com/package/vuepress-theme-minimalism"> <img src="https://img.shields.io/npm/dt/vuepress-theme-minimalism" alt=""></a>
+![NPM](https://img.shields.io/npm/l/vuepress-theme-minimalism) <a href="https://www.npmjs.com/package/vuepress-theme-minimalism"> <img src="https://img.shields.io/npm/v/vuepress-theme-minimalism" alt=""></a> <a href="https://www.npmjs.com/package/vuepress-theme-minimalism"> <img src="https://img.shields.io/npm/dt/vuepress-theme-minimalism" alt=""></a>
 
 ## 介绍
 
@@ -39,8 +37,7 @@ module.exports = {
 ├── docs
 │   ├── .vuepress #vuepress配置文件夹
 │   ├── posts #文章存放文件夹
-├── package.json
-└── yarn.lock
+└── package.json
 ```
 
 #### 书写
@@ -59,7 +56,7 @@ tags:
 
 ## 介绍
 
-一款简洁的 vuepress 主题，兼容 hexo YAML front matter 语法。
+一款简洁的 vuepress 主题，使用 YAML front matter 语法。
 ```
 
 ## 主题配置
@@ -70,7 +67,7 @@ tags:
 
 目前支持以下几个颜色配置：
 
-``` stylus
+```stylus
 $accentColor = #31837c //主题色
 $textColor = #2c3e50 //文字颜色
 $nprogressColor = #399c9c //nprogress颜色
@@ -85,23 +82,19 @@ module.exports = {
   title: '记录',
   description: 'description...',
   themeConfig: {
-    headerText: {
-      //deader 文字
-      index: 'ホーム',
-      all: '一覧',
-      tags: 'カテゴリー',
-      timeline: 'タイムライン',
-      seacrh: '探す'
-    },
     //footer 文字
-    footerText:
-      '©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>',
-    homeBackground: {
+    footer:{
+      text:
+      '©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>'
+      },
+    home:{
+      background: '',
       //首页背景颜色
       //设置主页背景颜色，false title为默认颜色
       show: true,
       fileName: '/xxx.jpg' // 背景图片名称，存放在public目录下
     },
+   },
     PostsListPopover: false, //是否显示文章内容提示
     darkMode: {
       //暗模式配置

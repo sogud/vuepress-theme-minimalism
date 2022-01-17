@@ -5,7 +5,11 @@
       enter-active-class="animated fadeInDownBig"
       leave-active-class="animated fadeOutUpBig"
     >
-      <div v-if="isVisible" class="back-to-top" @click="backTop"></div>
+      <div
+        v-if="isVisible"
+        class="back-to-top"
+        @click="backTop"
+      ></div>
     </transition>
   </div>
 </template>
@@ -52,26 +56,26 @@
 </script>
 
 <style lang="stylus">
-  @import './../styles/animeition'
+@import './../styles/animeition';
 
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  right: 50px;
+  top: 0px;
+  z-index: 2;
+  width: 70px;
+  height: 900px;
+  background: url('./../styles/images/scroll.png');
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+}
+
+@media (max-height: 850px) {
+  /* code */
   .back-to-top {
-  	cursor: pointer
-  	position: fixed
-  	right: 50px
-  	top: 0px
-  	z-index: 2
-  	width: 70px
-  	height: 900px
-  	background: url('./../styles/images/scroll.png')
-  	transition: all 0.5s ease-in-out
-  	opacity: 1
+    top: -300px;
+    right: 0px;
   }
-
-  @media (max-height: 850px) {
-  	/* code */
-  	.back-to-top {
-  		top: -300px
-  		right: 0px
-  	}
-  }
+}
 </style>

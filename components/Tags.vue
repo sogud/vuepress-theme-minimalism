@@ -1,6 +1,16 @@
 <template>
-  <el-row type="flex" justify="center" align="middle">
-    <el-col :span="24" :xs="{ span: 24 }" :sm="{ span: 24 }" :md="{ span: 20 }" :lg="{ span: 12 }">
+  <el-row
+    type="flex"
+    justify="center"
+    align="middle"
+  >
+    <el-col
+      :span="24"
+      :xs="{ span: 24 }"
+      :sm="{ span: 24 }"
+      :md="{ span: 20 }"
+      :lg="{ span: 12 }"
+    >
       <div class="container">
         <el-tag
           @click="toTags(tag)"
@@ -12,7 +22,10 @@
           <span class="iconfont icon-label_fill"></span>
           {{ tag[0].name }}
         </el-tag>
-        <el-row v-for="(item, index) in hasTagsList" :key="index">
+        <el-row
+          v-for="(item, index) in hasTagsList"
+          :key="index"
+        >
           <ListItem :item="item" />
         </el-row>
       </div>
@@ -65,19 +78,19 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import './../styles/config'
-@import './../styles/list'
+@import './../styles/config';
+@import './../styles/list';
 
 .container {
-	min-height: 40vh
+  min-height: 40vh;
 
-	.tags {
-		margin: 5px
-		font-size: 1em
-		color: $accentColor
-		background-color: $backgroundColor
-		border: none
-		cursor: pointer
-	}
+  .tags {
+    margin: 5px;
+    font-size: 1em;
+    color: $accentColor;
+    background-color: $bgColor;
+    border: none;
+    cursor: pointer;
+  }
 }
 </style>

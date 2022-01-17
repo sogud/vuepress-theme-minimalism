@@ -1,85 +1,157 @@
 <template>
-  <el-row type="flex" justify="center" align="middle">
-    <el-col :span="24" :xs="{ span: 24 }" :sm="{ span: 22 }" :md="{ span: 20 }" :lg="{ span: 12 }">
-      <div class="header">
-        <div class="container">
-          <el-row type="flex" class="row-bg" justify="space-between">
-            <el-col :span="16" :sm="16" :md="16" :lg="14" :xl="16" class="hidden-xs-only">
-              <div class="link-group">
-                <template v-for="(item, index) in $themeConfig.nav">
-                  <NavLink :link="item.link" :key="index">
-                    {{ item.text }}
-                  </NavLink>
-                </template>
-              </div>
-            </el-col>
-            <el-col :xs="5" class="hidden-sm-and-up">
-              <i class="el-icon-menu" @click="drawer = true"></i>
-            </el-col>
-            <SearchBox class="search-box" />
-          </el-row>
-          <el-drawer title="" :visible.sync="drawer" :with-header="false">
-            <el-menu class="el-menu-vertical" @select="drawer = false">
-              <template v-for="(item, index) in $themeConfig.nav">
-                <el-menu-item :key="index" :index="index">
-                  <router-link :to="item.link">
-                    <span>{{ item.text }}</span>
-                  </router-link>
-                </el-menu-item>
-              </template>
-            </el-menu>
-          </el-drawer>
+  <section id="header-wrapper">
+    <header id="header">
+      <div class="header-wrapper">
+        <div class="title">
+          <NavLink
+            link="/"
+            class="home-link"
+          >{{ $site.title }} </NavLink>
+        </div>
+        <div class="header-right-wrap">
+          <ul
+            v-if="$themeConfig.nav"
+            class="nav"
+          >
+            <li
+              v-for="item in $themeConfig.nav"
+              :key="item.text"
+              class="nav-item"
+            >
+              <NavLink :link="item.link">{{ item.text }}</NavLink>
+            </li>
+          </ul>
+          <SearchBox />
+          <Feed />
         </div>
       </div>
-    </el-col>
-  </el-row>
+    </header>
+  </section>
 </template>
 
 <script>
-import "element-ui/lib/theme-chalk/display.css"
+import SearchBox from '@SearchBox'
+import Feed from './Feed'
 
-import SearchBox from "@SearchBox"
-import NavLink from "@/components/NavLink"
-import "@/styles/icon/iconfont.css"
 export default {
-  name: "Header",
-  components: {
-    SearchBox,
-    NavLink
-  },
-  data() {
-    return {
-      drawer: false
-    }
-  },
-  mounted() {
-    console.log(this.$themeConfig.nav)
-  }
+  components: { SearchBox, Feed },
 }
 </script>
 
-<style lang="stylus" scoped>
-.header {
-	position: relative
-	flex-shrink: 0
-	height: 3rem
-	line-height: 3rem
-	display: block
-	color: #666
+<style lang="stylus">
+@import '~@app/style/config';
 
+#header {
+  z-index: 12;
+  top: 0;
+  width: $contentWidth;
+  height: $headerHeight;
+  box-sizing: border-box;
+  background-color: $headerBgColor;
+  padding: 20px 0px;
+  margin: auto;
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-	.container {
+  ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-		.link-group {
-			a {
-				margin-right: 8px
-				color: #666
-			}
-		}
-	}
+  &:hover {
+  }
 }
 
-.el-menu-vertical {
-	color: #ccc
+// border-bottom 5px solid lighten(#3eaf7c, 50%)
+.header-wrapper {
+  display: flex;
+  line-height: 40px;
+  height: 40px;
+
+  .title {
+    /* flex 0 0 200px */
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: 2px;
+    display: block;
+    text-transform: uppercase;
+
+    a {
+      color: $darkTextColor;
+      font-weight: bold;
+      font-family: PT Serif, Serif;
+      text-decoration: none;
+    }
+  }
+
+  .header-right-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .nav {
+      flex: 0 0 auto;
+      display: flex;
+      margin: 0;
+
+      .nav-item {
+        margin-left: 20px;
+
+        a {
+          font-family: PT Serif, Serif;
+          font-size: 20px;
+          // color lighten(#3eaf7c, 30%)
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+      }
+    }
+
+    .search-box {
+      font-family: PT Serif, Serif;
+      margin-left: 20px;
+
+      input {
+        border-radius: 5px;
+        transition: all 0.5s;
+        border: 1px solid #cecece;
+
+        &:hover {
+          border: 1px solid $accentColor;
+          box-shadow: 0 0 5px $accentColor;
+        }
+      }
+
+      .suggestions {
+        border: 1px solid $darkBorderColor;
+        top: 40px;
+        right: 0;
+
+        a {
+          color: $darkTextColor;
+          text-decoration: none;
+
+          &.focused {
+            color: $accentColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $MQMobile) {
+  #header {
+    display: none;
+  }
+
+  .header-wrapper {
+    flex-direction: column;
+
+    .header-right-wrap {
+      display: none;
+    }
+  }
 }
 </style>

@@ -42,13 +42,10 @@
 </template>
 
 <script>
-import "element-ui/lib/theme-chalk/display.css"
-import { Comment } from "@vuepress/plugin-blog/lib/client/components"
 export default {
   name: "Posts",
   components: {
-    Comment,
-    MyComment: () => import("./MyComment"),
+    Comment: () => import("./Comment"),
     TOC: () => import("./TOC")
   },
   data() {
@@ -57,7 +54,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$page)
     this.titleFixed = false
     window.addEventListener("scroll", this.handleScroll)
   },
@@ -66,7 +62,6 @@ export default {
     handleScroll() {
       let offsetTop = this.$refs.toc?.getBoundingClientRect()?.top
       this.titleFixed = offsetTop < 0
-      // some code
     }
   }
 }
@@ -84,7 +79,6 @@ export default {
 .toc {
   scrollbar-width: none
   -ms-overflow-style: none
-
   ::-webkit-scrollbar {
     display: none /* Chrome Safari */
   }

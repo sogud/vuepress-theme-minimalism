@@ -1,6 +1,7 @@
 const path = require("path")
 const fs = require("fs")
-const moment = require("moment")
+const dayjs = require("dayjs")
+const pick = require("lodash/pick")
 
 module.exports = (themeConfig, ctx) => {
   const siteConfig = ctx.siteConfig
@@ -11,7 +12,7 @@ module.exports = (themeConfig, ctx) => {
     nav: themeConfig.nav || [
       {
         text: "Blog",
-        link: "/"
+        link: "/list/"
       }
     ],
     summary: themeConfig.summary === undefined ? true : themeConfig.summary,
@@ -22,25 +23,66 @@ module.exports = (themeConfig, ctx) => {
    * Configure blog plugin
    */
   const defaultBlogPluginOptions = {
-    // comment: {
-    //   // Which service you'd like to use
-    //   service: "vssue",
-    //   // The owner's name of repository to store the issues and comments.
-    //   owner: "You",
-    //   // The name of repository to store the issues and comments.
-    //   repo: "Your repo",
-    //   // The clientId & clientSecret introduced in OAuth2 spec.
-    //   clientId: "Your clientId",
-    //   clientSecret: "Your clientSecret"
-    // }
-    comment: {
-      service: "disqus",
-      shortname: "1net-1"
+    directories: [
+      {
+        // 当前分类的唯一 ID
+        id: "post",
+        // 目标文件夹
+        dirname: "posts",
+        // `entry page` (或者 `list page`) 的路径
+        path: "/list/",
+        layout: "List"
+      }
+    ],
+    frontmatters: [
+      {
+        id: "tags",
+        keys: ["tag", "tags"],
+        path: "/tag/",
+        layout: "Tags"
+      },
+      {
+        id: "timeline",
+        keys: ["timeline"],
+        path: "/timeline/",
+        layout: "Timeline"
+      }
+    ],
+    globalPagination: {
+      lengthPerPage: 20
     }
   }
+  let resolvedFeedOptions
+  const isFeedEnabled = themeConfig.feed && themeConfig.feed.canonical_base
+  if (isFeedEnabled) {
+    const { rss = true, atom = false, json = false, ...feedOptions } = themeConfig.feed
+    resolvedFeedOptions = Object.assign({}, feedOptions, {
+      feeds: {
+        rss2: { enable: rss },
+        atom1: { enable: atom },
+        json1: { enable: json }
+      }
+    })
+  }
+
+  const properties = [
+    "directories",
+    "frontmatters",
+    "globalPagination",
+    "sitemap",
+    "comment",
+    "newsletter"
+  ]
+  const themeConfigPluginOptions = {
+    ...pick(themeConfig, properties),
+    feed: resolvedFeedOptions
+  }
+
+  const blogPluginOptions = Object.assign({}, defaultBlogPluginOptions, themeConfigPluginOptions)
+
   return {
     plugins: [
-      ["@vuepress/blog", defaultBlogPluginOptions],
+      ["@vuepress/blog", blogPluginOptions],
       [
         "@vuepress/search",
         {
@@ -59,30 +101,28 @@ module.exports = (themeConfig, ctx) => {
         "@vuepress/last-updated",
         {
           transformer: timestamp => {
-            const moment = require("moment")
-            moment.locale("zh-CN")
-            return moment(timestamp).format("YYYY-MM-DD HH:mm:ss")
+            const dayjs = require("dayjs")
+            dayjs.locale("zh-CN")
+            return dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss")
           }
         }
       ]
-      // [
-      //   "vuepress-plugin-live2d",
-      //   {
-      //     modelName: "izumi",
-      //     mobileShow: false
-      //   }
-      // ]
     ],
-    enhanceAppFiles: path.resolve(__dirname, "enhanceApp.js"),
+    enhanceAppFiles: path.resolve(__dirname, "./enhanceApp.js"),
+    define: {
+      THEME_BLOG_PAGINATION_COMPONENT: themeConfig.paginationComponent
+        ? themeConfig.paginationComponent
+        : "Pagination"
+    },
     alias: {
-      "@": path.resolve(__dirname)
+      "@": path.resolve(__dirname),
+      fonts: path.resolve(__dirname, "fonts")
     },
     /**
      * Generate tag and category metadata.
      */
     async clientDynamicModules() {
       const { pages } = ctx
-
       const postsFilter = val => val.path.slice(1, 6) === "posts"
 
       const postsSorter = (prev, next) => {
@@ -128,8 +168,8 @@ module.exports = (themeConfig, ctx) => {
           tags: tags || "",
           title: title || "你忘记写标题了",
           lastUpdated:
-            moment(val.frontmatter.date).format("YYYY-MM-DD HH:mm:ss") ||
-            moment(lastUpdated).format("YYYY-MM-DD HH:mm:ss")
+            dayjs(val.frontmatter.date).format("YYYY-MM-DD HH:mm:ss") ||
+            dayjs(lastUpdated).format("YYYY-MM-DD HH:mm:ss")
         }
 
         archived.push(page)
@@ -140,8 +180,8 @@ module.exports = (themeConfig, ctx) => {
           title,
           path,
           lastUpdated:
-            moment(val.frontmatter.date).format("YYYY-MM-DD HH:mm:ss") ||
-            moment(lastUpdated).format("YYYY-MM-DD HH:mm:ss")
+            dayjs(val.frontmatter.date).format("YYYY-MM-DD HH:mm:ss") ||
+            dayjs(lastUpdated).format("YYYY-MM-DD HH:mm:ss")
         }
 
         if (!tags) {
@@ -174,7 +214,7 @@ module.exports = (themeConfig, ctx) => {
       })
 
       archived.forEach((val, i) => {
-        const time = moment(val.lastUpdated).format("YYYY-MM").toString()
+        const time = dayjs(val.lastUpdated).format("YYYY-MM").toString()
         const hasIndex = timeLine.findIndex(item => item.time === time)
         if (hasIndex !== -1) {
           timeLine[hasIndex].data.push(val)
