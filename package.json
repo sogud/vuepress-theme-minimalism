@@ -1,14 +1,13 @@
 {
   "name": "vuepress-theme-minimalism",
   "description": "theme for vuepress",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev example --temp example/.temp",
     "example:build": "vuepress build example --temp example/.temp",
     "example:dev": "vuepress dev example --temp example/.temp",
     "lint": "eslint . --ext .js,.vue",
-    "prepublishOnly": "npm run test && npm run example:build && conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
     "test": "jest"
   },
   "private": false,
