@@ -11,7 +11,7 @@ Created by iconfont
 
 <font id="iconfont" horiz-adv-x="1024" >
   <font-face
-    font-family="iconfont"
+    // font-family="iconfont"
     font-weight="500"
     font-stretch="normal"
     units-per-em="1024"

@@ -91,7 +91,7 @@ export default {
     .title {
       padding-left: 0.375em;
       font-size: 1.6em;
-      font-family: Lato, sans-serif;
+      // font-family: Lato, sans-serif;
       font-weight: 200;
       letter-spacing: 0.65em;
       color: white;

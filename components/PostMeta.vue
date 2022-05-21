@@ -7,76 +7,57 @@
       itemtype="http://schema.org/Person"
       itemscope
     >
-      <NavigationIcon />
+      <span>🗺️ &nbsp;</span>
       <span itemprop="name">{{ author }}</span>
-      <span
-        v-if="location"
-        itemprop="address"
-      > &nbsp; in {{ location }}</span>
+      <span v-if="location" itemprop="address">&nbsp; in {{ location }}</span>
     </div>
-    <div
-      v-if="date"
-      class="post-meta-date"
-    >
-      <ClockIcon />
-      <time
-        pubdate
-        itemprop="datePublished"
-        :datetime="date"
-      >
+    <div v-if="date" class="post-meta-date">
+      <span>📅 &nbsp;</span>
+      <time pubdate itemprop="datePublished" :datetime="date">
         {{ resolvedDate }}
       </time>
     </div>
-    <ul
-      v-if="tags"
-      class="post-meta-tags"
-      itemprop="keywords"
-    >
-      <PostTag
-        v-for="tag in resolvedTags"
-        :key="tag"
-        :tag="tag"
-      />
+    <ul v-if="tags" class="post-meta-tags" itemprop="keywords">
+      <span>🏷️ &nbsp;</span>
+      <PostTag v-for="tag in resolvedTags" :key="tag" :tag="tag" />
     </ul>
   </div>
 </template>
 
 <script>
-import dayjs from 'dayjs'
-import dayjsPluginUTC from 'dayjs/plugin/utc'
-import { NavigationIcon, ClockIcon } from 'vue-feather-icons'
-import PostTag from './PostTag.vue'
+import dayjs from "dayjs"
+import dayjsPluginUTC from "dayjs/plugin/utc"
+import { NavigationIcon, ClockIcon } from "vue-feather-icons"
+import PostTag from "./PostTag.vue"
 
 dayjs.extend(dayjsPluginUTC)
 
 export default {
-  name: 'PostMeta',
+  name: "PostMeta",
   components: { NavigationIcon, ClockIcon, PostTag },
   props: {
     tags: {
-      type: [Array, String],
+      type: [Array, String]
     },
     author: {
-      type: String,
+      type: String
     },
     date: {
-      type: String,
+      type: String
     },
     location: {
-      type: String,
-    },
+      type: String
+    }
   },
   computed: {
     resolvedDate() {
-      return dayjs
-        .utc(this.date)
-        .format(this.$themeConfig.dateFormat || 'ddd MMM DD YYYY')
+      return dayjs.utc(this.date).format(this.$themeConfig.dateFormat || "ddd MMM DD YYYY")
     },
     resolvedTags() {
       if (!this.tags || Array.isArray(this.tags)) return this.tags
       return [this.tags]
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -88,7 +69,7 @@ export default {
     list-style: none;
     overflow: hidden;
     padding: 0;
-    margin: 20px 0;
+    margin: 10px 0;
 
     > li {
       margin-bottom: 10px;

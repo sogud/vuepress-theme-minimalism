@@ -82,7 +82,7 @@ export default {
     a {
       color: $darkTextColor;
       font-weight: bold;
-      font-family: PT Serif, Serif;
+      // font-family: PT Serif, Serif;
       text-decoration: none;
     }
   }
@@ -102,7 +102,7 @@ export default {
         margin-left: 20px;
 
         a {
-          font-family: PT Serif, Serif;
+          // font-family: PT Serif, Serif;
           font-size: 20px;
           // color lighten(#3eaf7c, 30%)
           text-decoration: none;
@@ -112,7 +112,7 @@ export default {
     }
 
     .search-box {
-      font-family: PT Serif, Serif;
+      // font-family: PT Serif, Serif;
       margin-left: 20px;
 
       input {

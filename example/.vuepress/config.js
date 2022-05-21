@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
   base: "/",
-  title: "记录",
+  title: "sogud'blog",
   // theme: "vuepress-theme-minimalism",
   theme: require.resolve("../../"),
   themeConfig: {

@@ -16,7 +16,6 @@ export default {
 
 <style lang="stylus">
 .blog-tags {
-  width: 66%;
 }
 
 @media screen and (max-width: 1000px) {
