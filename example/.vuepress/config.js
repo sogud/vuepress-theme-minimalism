@@ -3,8 +3,8 @@ const path = require("path")
 module.exports = {
   base: "/",
   title: "sogud'blog",
-  theme: "vuepress-theme-minimalism",
-  // theme: require.resolve("../../"),
+  // theme: "vuepress-theme-minimalism",
+  theme: require.resolve("../../"),
   themeConfig: {
     nav: [
       {
@@ -19,7 +19,7 @@ module.exports = {
         text: "Github",
         link: "https://github.com/sogud"
       }
-    ]
+    ],
     footer: {
       contact: "联系",
       links: [
