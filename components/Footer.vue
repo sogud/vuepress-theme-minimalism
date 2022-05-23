@@ -1,50 +1,30 @@
 <template>
   <footer class="footer">
     <div class="footer-left-wrap">
-      <ul
-        v-if="links"
-        class="links"
-      >
-        <li
-          v-for="item in links"
-          :key="item.link"
-          class="links-item"
-        >
+      <ul v-if="links" class="links">
+        <li v-for="item in links" :key="item.link" class="links-item">
           <NavLink :link="item.link">{{ item.text }}</NavLink>
         </li>
       </ul>
     </div>
-    <div class="footer-right-wrap">
-
-    </div>
+    <div class="footer-right-wrap"></div>
   </footer>
 </template>
 
 <script>
-
-
 export default {
-  components: {
-
-
-  },
+  components: {},
 
   computed: {
     copyright() {
-      return (
-        (this.$themeConfig.footer && this.$themeConfig.footer.linksRight) || []
-      )
+      return (this.$themeConfig.footer && this.$themeConfig.footer.linksRight) || []
     },
     links() {
-      return (
-        (this.$themeConfig.footer && this.$themeConfig.footer.links) || []
-      )
-    },
+      return (this.$themeConfig.footer && this.$themeConfig.footer.links) || []
+    }
   },
 
-  methods: {
-
-  },
+  methods: {}
 }
 </script>
 

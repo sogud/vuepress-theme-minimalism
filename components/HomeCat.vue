@@ -14,8 +14,7 @@ export default {
     PureCat
   },
   data() {
-    return {
-    }
+    return {}
   },
   computed: {
     data() {
