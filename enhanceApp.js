@@ -1,5 +1,3 @@
-import ElementUI from "element-ui/lib"
-import "element-ui/lib/theme-chalk/index.css"
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
@@ -7,5 +5,4 @@ export default ({
   siteData // site metadata
 }) => {
   // Vue.use(routes, { router })
-  Vue.use(ElementUI)
 }
