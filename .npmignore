@@ -9,5 +9,9 @@ yarn-error.log*
 # Editor directory and files
 .vscode
 .idea
-
+.github
+.gitignore
+.npmignore
+.prettierrc.js
+example
 data/*.js

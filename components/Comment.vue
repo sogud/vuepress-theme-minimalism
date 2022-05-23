@@ -1,10 +1,7 @@
 <template>
   <div>
     <div v-if="$site.themeConfig.comments.vssue.use">
-      <Vssue
-        :title="$page.title"
-        :options="options"
-      />
+      <Vssue :title="$page.title" :options="options" />
     </div>
     <div v-if="$site.themeConfig.comments.disqus.use">
       <div id="disqus_thread"></div>
