@@ -97,7 +97,7 @@ module.exports = {
         text: "Github",
         link: "https://github.com/sogud"
       }
-    ]
+    ],
     footer: {
       contact: "联系",
       links: [
