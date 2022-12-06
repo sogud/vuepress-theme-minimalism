@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev example --temp example/.temp",
-    "example:build": "vuepress build example --temp example/.temp",
+    "example:build": "vuepress build example",
     "example:dev": "vuepress dev example --temp example/.temp",
     "lint": "eslint . --ext .js,.vue",
     "test": "jest"
